@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[简单Hexo教程]]></title>
+    <url>%2F2018%2F07%2F09%2F%E7%AE%80%E5%8D%95Hexo%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[目录： 准备：github环境、github.io已配置好 安装Hexo 初次本地体验Hexo 配置Hexo 下载及配置Next主题 ##安装Hexo 安装node.js npm install -g hexo 使用环境的几条命令 部署：npm install hexo-deployer-git –save ##初次本地体验Hexo 创建一个hexo文件夹保存内容 hexo init（initial：初始化） hexo g（generate：生成） hexo s （hexo server：启动本地服务预览） 复制出现的http://localhost:4000到浏览器可以看到效果 注意：如果电脑没有显示可能是端口被占用，使用hexo s -p 5000换个端口，网址的4000换成5000即可。 ##配置Hexo打开根目录下的_config.yml文件开始配置 界面：最上面可以找到title（标题）然后下面的都是可以写的，根据个人喜好配置。注意language可以用zh-Hans就可以显示中文。 主题：找到theme后面改成next，等下会配置此主题 开启搜索选项： 部署：配置好后方便后续的推送，找到deployg 格式如下 type: git repo: git@github.com:youname/yourname.github.io.git branch: master Hexo的简单配置完成 ##下载及配置Next主题 Next下载（在根目录下输入）:git clone https://github.com/iissnan/hexo-theme-next themes/next 简单配置 风格：找到Schemes Pisces不错，去掉前面的#使用 头像：avatar: /images/yours.png 搜索选项：Local search enable改为true]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git+Hexo]]></title>
     <url>%2F2018%2F04%2F30%2FGit-Hexo%2F</url>
     <content type="text"><![CDATA[搭建前一直在看别人写的教程，就是不肯看官方的，觉得官方的教程肯定写的很难，很多软件也有自己的帮助和官方教程，但是我一般还是选择去查看别人的教程，总是觉得别人的写的就是通俗易懂，官方的就是难，大家搭建完后都喜欢给自己写个教程方便以后再次使用，但是写的时候会用自己能理解的语言去写，有时候他人难以理解。但是官方的教程争对的是所有需要安装的用户，其详细程度和易用性得到了众多用户的检验，根据自己的需求去参照官方教程其实是最节约时间的方法，而不要将时间浪费在阅读众多重复的个人教程上。]]></content>
