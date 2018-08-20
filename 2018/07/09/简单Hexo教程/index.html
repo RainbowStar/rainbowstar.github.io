@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="目录： 准备：github环境、github.io已配置好  安装Hexo 初次本地体验Hexo 配置Hexo 下载及配置Next主题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T15:41:47.114Z">
+<meta property="og:updated_time" content="2018-08-20T11:47:46.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单Hexo教程">
 <meta name="twitter:description" content="目录： 准备：github环境、github.io已配置好  安装Hexo 初次本地体验Hexo 配置Hexo 下载及配置Next主题">
@@ -362,32 +362,35 @@
 <li>安装Hexo</li>
 <li>初次本地体验Hexo</li>
 <li>配置Hexo</li>
-<li>下载及配置Next主题<a id="more"></a>
-##安装Hexo</li>
+<li><p>下载及配置Next主题</p>
+<a id="more"></a>
+<p>##安装Hexo</p>
+</li>
 </ol>
 <ul>
 <li>安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a></li>
 <li>npm install -g hexo</li>
-<li>使用环境的几条命令<ol>
+<li><p>使用环境的几条命令</p>
+<ol>
 <li>部署：npm install hexo-deployer-git –save </li>
 </ol>
+<p>##初次本地体验Hexo</p>
 </li>
 </ul>
-<p>##初次本地体验Hexo</p>
 <ol>
 <li>创建一个hexo文件夹保存内容</li>
 <li>hexo init（initial：初始化）</li>
 <li>hexo g（generate：生成）</li>
 <li>hexo s （hexo server：启动本地服务预览）</li>
-<li>复制出现的<a href="http://localhost:4000到浏览器可以看到效果" target="_blank" rel="noopener">http://localhost:4000到浏览器可以看到效果</a></li>
+<li>复制出现的 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 到浏览器可以看到效果</li>
 </ol>
 <p>注意：如果电脑没有显示可能是端口被占用，使用hexo s -p 5000换个端口，网址的4000换成5000即可。</p>
-<p>##配置Hexo<br>打开根目录下的_config.yml文件开始配置</p>
+<p> ##配置Hexo<br>打开根目录下的_config.yml文件开始配置</p>
 <ol>
 <li>界面：最上面可以找到title（标题）然后下面的都是可以写的，根据个人喜好配置。注意language可以用zh-Hans就可以显示中文。</li>
 <li>主题：找到theme后面改成next，等下会配置此主题</li>
-<li>开启搜索选项：</li>
-<li>部署：配置好后方便后续的推送，找到deployg 格式如下<ul>
+<li>开启搜索选项： npm install hexo-generator-searchdb –save</li>
+<li>部署：配置好后方便后续的推送，找到deploy 格式如下<ul>
 <li>type: git</li>
 <li>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:youname/yourname.github.io.git</li>
 <li>branch: master</li>
@@ -395,13 +398,20 @@
 </li>
 </ol>
 <p>Hexo的简单配置完成</p>
-<p>##下载及配置Next主题</p>
+<p> ##下载及配置Next主题</p>
 <ol>
 <li>Next下载（在根目录下输入）:git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next</li>
 <li>简单配置<ul>
 <li>风格：找到Schemes Pisces不错，去掉前面的#使用</li>
-<li>头像：avatar: /images/yours.png</li>
+<li>头像：在最后添加avatar: /images/yours.png</li>
 <li>搜索选项：Local search enable改为true</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li>新建和推送<ul>
+<li>新建：hexo new 名字（生成.md文件，生成时间和标签头）</li>
+<li>推送：hexo g(生成动态文件)—&gt;hexo s(预览）—&gt;hexo deploy(部署） </li>
 </ul>
 </li>
 </ol>
