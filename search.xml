@@ -1,6 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[typedef]]></title>
+    <url>%2F2018%2F09%2F11%2Ftypedef%2F</url>
+    <content type="text"><![CDATA[define Type_D inttypedef int Type_T使用上述两个类型分别定义了两个变量Type_D a,b;Type_T x,y; 请问 a b x y分别是什么类型，使用 #define 与 typeof的区别是什么？那个更加好？typeof(a) = int*typeof(b) = int define 是字符替换int a,b; =&gt; int a,b; *号结合性！ typeof(x) = inttypeof(y) = int（int*） x,y;//但是语法不支持 编译不会过 C语言不可以给类型加()?注意：(类型说明符) 这是类型强转！]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[fork经典]]></title>
+    <url>%2F2018%2F09%2F11%2Ffork%E7%BB%8F%E5%85%B8%2F</url>
+    <content type="text"><![CDATA[小收获：The Design of Everyday Thingsenv:Linux查看环境变量使用env命令显示所有的环境变量产生多少main？int main(int argc, char *argv[]) { fork(); fork() &amp;&amp; fork() || fork(); fork(); }解析总结：fork一次产生一个新进程，父进程一直跟随20个计算法：fork一次就加1 这里注意最后一个fork最后也会执行，第二行代码执行后最后一个fork也会执行 int main(void){ int i; for(i=0;i&lt;2;i++) { fork(); printf(“_\n”); } return 0;}答案：6 int main(void){ int i; for(i=0;i&lt;2;i++) { fork(); printf(““); } return 0;}答案：8这两题一样，这里先算出最后有多少进程，然后算出产生这些进程的过程。这里就是 2—&gt; 4 2+4=6注意：不带\n有两个会在缓冲区 因此会增加数量]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数据存储空间]]></title>
+    <url>%2F2018%2F09%2F11%2F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%2F</url>
+    <content type="text"><![CDATA[程序在运行过程中,数据的存储问题Linux将程序运行时,地址空间分为了6个部分 栈: 用来存放局部变量(未初始化) 生成周期 随函数(代码块)持续性堆: 用来存放动态分配的空间 malloc/realloc/calloc三个函数都是用来动态分配存储空间,并且返回分配的空间的首地址 生存周期,只要没有释放(free),那么随进程持续性 .bss: 用来存放未初始化的全局变量和未初始化的 static修饰的变量 随进程持续性:程序运行时就分配空间,程序结束时才回收(销毁.释放)空间 .rodata read ONLY data 用来存放只读数据 比如 常量 随进程持续性 .data 数据段 存放初始化的局部变量和初始化的static修饰的变量 随进程持续性 .text 文本 文本段,用来存放代码/指令 也被称为 代码段 随进程持续性]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[文档要求]]></title>
+    <url>%2F2018%2F09%2F11%2F%E6%96%87%E6%A1%A3%E8%A6%81%E6%B1%82%2F</url>
+    <content type="text"><![CDATA[函数使用： 头文件 参数、说明 使用例子 特殊情况]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>文档规范</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vim技巧]]></title>
+    <url>%2F2018%2F09%2F10%2Fvim%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[留下坑，慢慢填1. 标签页和多窗口2.]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[链接保存]]></title>
+    <url>%2F2018%2F09%2F10%2F%E9%93%BE%E6%8E%A5%E4%BF%9D%E5%AD%98%2F</url>
+    <content type="text"><![CDATA[arduino极客工坊项目实验室数据结构和算法排序算法参考 书籍保存 linux 递归一下]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[信号]]></title>
+    <url>%2F2018%2F09%2F07%2F%E4%BF%A1%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122SIGHUP 1 Term Hangup detected on controlling terminal or death of controlling process 在控制终端收到一个&quot;挂起&quot;或控制进程死亡时会收到该信号 SIGINT 2 Term Interrupt from keyboard 终止进程运行CTRL+C SIGQUIT 3 Core Quit from keyboard 发送停止信息并停止进程执行 CTRL+Z SIGILL 4 Core Illegal Instruction 遇到非法指令时产生的信号 SIGABRT 6 Core Abort signal from abort(3) 进程非正常终止时产生的信号 SIGFPE 8 Core Floating point exception 遇到一个浮点错误 a/0 SIGKILL 9 Term Kill signal 杀死进程 SIGSEGV 11 Core Invalid memory reference 非法内存引用(段错误) SIGPIPE 13 Term Broken pipe: write to pipe with no readers当管道写端写入数据时,管道读端收到该信号 SIGALRM 14 Term Timer signal from alarm(2) 定时器信号,超时信号 SIGTERM 15 Term Termination signal 终止信号 CTRL+\ SIGUSR1 30,10,16 Term User-defined signal 1 用户自定义信号1 SIGUSR2 31,12,17 Term User-defined signal 2 用户自定义信号2 SIGCHLD 20,17,18 Ign Child stopped or terminated子进程退出时,父进程收到该信号 SIGCONT 19,18,25 Cont Continue if stopped 继续执行一个挂起的进程 SIGSTOP 17,19,23 Stop Stop process 停止一个进程 SIGTSTP 18,20,24 Stop Stop typed at terminal 从终端上发起停止信号 SIGTTIN 21,21,26 Stop Terminal input for background process 后台试图从控制台输入 SIGTTOU 22,22,27 Stop Terminal output for background process 后台试图从控制台输出 12345678910111213141516171819202122232425262728293031323334353637#include&lt;stdio.h&gt;#include &lt;sys/types.h&gt;#include &lt;signal.h&gt;typedef void (*sighandler_t)(int);int flg = 1;void my_sig_fun(int sig)&#123; printf(&quot;recv signal is:%d\n&quot;,sig); switch(sig) &#123; case SIGINT: printf(&quot;I can go out\n&quot;); flg = 0; break; case SIGALRM: printf(&quot;time out\n&quot;); flg = 0; break; &#125;&#125;int main(int argc,char *argv[])&#123; signal(SIGINT,my_sig_fun); signal(SIGALRM,my_sig_fun); alarm(5); //kill(atoi(argv[1]),SIGKILL);//atoi函数,是用来将给定的数字字符串转换为整数 while(flg) &#123; printf(&quot;zhuan bei shang!!\n&quot;); sleep(1); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[系统io]]></title>
+    <url>%2F2018%2F09%2F07%2F%E7%B3%BB%E7%BB%9Fio%2F</url>
+    <content type="text"><![CDATA[openreadcloselseek：定位opendirreddir例子：bmp显示 目录读取（见项目电子相册）]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[标准io]]></title>
+    <url>%2F2018%2F09%2F07%2F%E6%A0%87%E5%87%86io%2F</url>
+    <content type="text"><![CDATA[需要：#include &lt;stdio.hFILE f1,f2;f1 = fopen(“./1.txt”,”r”);fclose(f1);12345678910111213141516171819202122a. 按字节读写:每次读写一个字节 getc/fgetc/getcharint getc(FILE *stream);int fgetc(FILE *stream);int getchar(void); putc/fputc/putcharint putchar(int c);int fputc(int c, FILE *stream);int putc(int c, FILE *stream); b. 按行读写: 每次读写一行数据 gets/fgetschar *gets(char *s);char *fgets(char *s, int size, FILE *stream); puts/fputs c. 直接读写: 每次按开发者需求进行读写 fread fwritesize_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);size_t fwrite(const void *ptr, size_t size, size_t nmemb,FILE *stream);对于读写流来说,读写位置由光标决定: 读是读取光标所在位置的内容 写是写入光标所在的位置 每次读写后光标自动后移n个字节(n是读写的字节数) 1234567定位int fseek(FILE *stream, long offset, int whence);SEEK_SET 表示&quot;光标&quot;相对于 文件头移动SEEK_CUR 表示&quot;光标&quot;从当前位置移动SEEK_END 表示&quot;光标&quot;从文件末尾开始移动fseek(fp,0,SEEK_SET); &lt;---- 将光标定位到文件头fseek(fp,0,SEEK_END); &lt;---- 表示将光标定位到文件尾 12345678910111213141516int fscanf(FILE *stream, const char *format, ...);fscanf表示从指定的文件流stream中,按照format的格式获取输入数据, 并保存到...(参数列表)中给定的空间sscanf表示从指定的字符串str中,按照format的格式获取输入数据并保存到...(参数列表)中给定的空间int sscanf(const char *str, const char *format, ...);fprintf将参数列表中的数据,按format的格式输出到stream指定的流中int fprintf(FILE *stream, const char *format, ...); sprintf将参数列表中的数据,按format的格式输出到str指定的字符数组中int sprintf(char *str, const char *format, ...);str空间不足,可能导致存放不下输出的数据,从而很有可能在程序运行时出现&quot;段错误&quot; 为了改善这个bug,特引出了 snprintf snprintf表示将...中的数据以format的格式,最大输出size-1个字符到str中int snprintf(char *str, size_t size, const char *format, ...);]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[排序算法]]></title>
+    <url>%2F2018%2F09%2F07%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[代码已写，待归纳冒泡排序：快速排序：递归排序:选择排序：希尔排序：选择排序：]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数据结构]]></title>
+    <url>%2F2018%2F09%2F07%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表 使用最多：双向循环链表创建链表： 结构体：存放数据的下一个指向 初始化链表 添加链表结点 附加 查、删、改结点 顺序排序typedef struct node{char path[128];int mode;struct node next;struct node prev;}Node; typedef struct list{ Node first; Node last;}List; List init_link()//创建初始化链表{ List list = (List*) malloc(sizeof(List)); if(list == NULL) { perror(“List malloc error”); return NULL; } list-&gt;first = list-&gt;last = NULL; return list;} List add_link(List list,char filename,int mode){ Node p = (Node *)malloc(sizeof(Node)); if(p==NULL) { perror(“node malloc error”); return NULL; } p-&gt;mode=mode; strcpy(p-&gt;path,filename); p-&gt;next = p-&gt;prev = NULL; if(list-&gt;first == NULL) { list-&gt;first = list-&gt;last = p; //头尾都是他 list-&gt;last-&gt;next = list-&gt;first; // 尾巴的下一个是 第一个 list-&gt;first-&gt;prev = list-&gt;last; } else { //尾插 list-&gt;last-&gt;next = p; // 原最后一个的下一个是新节点 p-&gt;prev = list-&gt;last;// list-&gt;last = p; //新节点成为新尾巴 list-&gt;last-&gt;next = list-&gt;first; //尾巴 的下一个是 第一个 list-&gt;first-&gt;prev = list-&gt;last; } return list; } 队列：限定在表头删除 表尾插入的线性表 称之为 队列！队头：指的是删除的那一端！队尾：插入的一端原则：先进先出 first in first out 栈：限定在表的一端进行插入和删除的线性表（stack）!栈顶：就是插入和删除的那一端！栈低：不能插入和删除的一端 树：前序遍历：根左右（1）访问根节点 （2）前序遍历左子树 （3）前序遍历右子树中序遍历：左根右（1）中序遍历左子树 （2）访问根节点 （3）中序遍历右子树后序遍历：左右根1）后序遍历左子树 （2）后序遍历右子树 （3）访问根节点核心理解：在子节点时也是按照规律输出，套用嵌套的概念。]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[结构体]]></title>
+    <url>%2F2018%2F09%2F06%2F%E7%BB%93%E6%9E%84%E4%BD%93%2F</url>
+    <content type="text"><![CDATA[其中: struct 结构体名 就是新的数据类型例如:12345678struct student&#123; int id; char name[50]; char sex[10]; int age; float score; &#125;; struct student stu;stu就是结构体变量名 结构体成员在内存中的分布以定义结构体时,成员定义的先后顺序依次分配空间定义的时候直接对变量赋值1) 按定义结构体的成员顺序,依次全初始化赋值,用’,’分开每一个变量的值 struct test t = {10086,’c’}; 2) 不按顺序赋值,需要指定赋值哪一个成员变量 struct test t = { .b = ‘c’, .a = 10010 }; 3) 结构体数组初始化 a.按数组元素依次初始化 struct test t[3] = { {1,’a’}, {2,’b’}, {3,’c’} };共用体与结构体的区别a)结构体的大小 与 各成员变量的类型有关,是所有成员类型所占空间大小的和123456比如 struct test &#123; int a; int b; &#125;; ===&gt; 8个字节 共用体的所有成员共用一块内存空间,共用体的大小 就是成员中 内存空间最大的那个变量的空间大小12345678比如: union test &#123; int a; char c; short d; &#125;; ===&gt; 4字节======&gt; 共用体最大的特色 节约空间 b) 共用体中所有成员的地址 都是该成员中所占空间最大的那个变量的 首地址 共用体适用与 成员变量 不同时使用的情况 ===================================内存的存储模式=================================================在现代操作系统中,内存的存储分为 大端模式 和 小端模式 大端模式:数据的高字节存放在内存的低地址, 数据的低字节存放在内存的高地址 小端模式:数据的低字节存放在内存的低地址 数据的高字节存放在内存的高地址 验证当前系统的大小端;12345union test&#123; int a; char c;&#125;; t.a = 0x11223344;printf(“%x\n”,t.c) // 44 小端 11 大端1234567891011121314union test &#123; int a; char c[4]; &#125;; union test t; t.c[0] = 0x12; t.c[1] = 0x34; t.c[2] = 0x56; t.c[3] = 0x78; t.a == ? 0x12345678 //F 0x87654321 //F 0x78563412 //T 将枚举类型中的成员变量一一列举出在某些情况下,一个变量的值是在一定范围内变化的,那么我们就可以利用枚举,把该变量的值都列举出来比如:一个星期的变化是在 1 ~ 7之间12345678910enum weekday&#123; MON = 1, TUE, //2 WEN, //3 THU, //4 FRI, //5 SAT, //6 SUN //7&#125;; ★★★★★枚举可以在定义时给成员变量赋值,未赋值的成员变量由上一个变量的值 +1如果都未赋值,则第一个成员变量的值为 0, 后续变量依次+1]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[指针]]></title>
+    <url>%2F2018%2F09%2F06%2F%E6%8C%87%E9%92%88%2F</url>
+    <content type="text"><![CDATA[指针：其概念和地址是差不多的，可以认为地址就是一个指针 指针就是一个地址 指向运算符，当*和&amp;同时出现时可以抵消 int a = 5;int p = &a;如何通过 p给a赋值为6？ p = 6;一个变量的数据类型是什么？就是定义这个变量时 变量名前面的东西！ char b[10];char p = b;p所指向的内存空间中 的数据类型是什么？ charsizeof(p) = 1;偏移的单位就是1 int a[10];int q = a;q所指向的内存空间中 的数据类型是什么？intsizeof(q) = 4;偏移的单位是4！ p+i代表偏移i个单位长度 ，这个单位长度由p指向的数据类型来决定！12345678那么 将a当做一个数组来看 &amp;a 的含义是什么？整个数组的地址！整个数组的类型是什么？ int[10];&amp;a是一个地址其可以看做指向整个数组的常量指针！这个指针+1代表偏移1个单位长度 的地址 单位长度为sizeof(a) = 40！区分： a 数组名 其本质是标识整个数组！ 其值等于首地址 即&amp;a[0] 所以可以认为其是一个指向数组第0个元素的常量指针&amp;a[0] 数组第0个元素的地址 其值为首地址！&amp;a 取整个数组的地址 值为首地址！a &amp;a[0] &amp;a在值上等价 但是 在含以上相差甚远！ 数组指针和指针数组指针数组：数组 里面存储指针（字面对比理解：字符数组）int p[N]数组指针： 指针 指向一个数组（int型指针，这个就是数组型指针）int (p)[N];函数指针和指针函数指针函数：返回值类型为指针的函数 函数指针：指向函数的指针返回值类型 （*p）(参数列表类型)； const int p;代表const修饰指针指向的数据，指针的指向可以改变但是指针指向的内容不可以改变int const p;代表 const修饰指针 指针的指向不可改变 但是指针指向的内容可以变！const int *const p;指向和指向的值都不可以变！代表 const 修饰的是 a所指向的对象， 也就是 a可以变 但是a指向的地址中的值不可以变！ char c = ‘\0’;sizeof(c) = sizeof(typeof(c)) =sizeof(char) = 1sizeof(‘\0’) = sizeof(typeof(‘\0’)) = sizeof(typeof(0)) = sizeof(int) = 4原因：在计算机内存中 字符是以ASCII存放的！在计算机中参与运算的类型只有 int 和 double 有时会存在 float!参与运算是什么？ 整型运算一定当做int来运算然后类型隐式转化！123456789101112131415161718192021222324252627282930char *p = &quot;123456&quot;;sizeof(*p) = sizeof(typeof(*p)) = sizeof(char)=1sizeof(p) = sizeof(typeof(p)) = sizeof(char *) = 4int *p = NULL;sizeof(*p) = sizeof(typeof(*p)) = sizeof(int) = 4;sizeof(p) = sizeof(typeof(p)) = sizeof(int *) = 4;7、int a[10];int *p = a;sizeof(*p) = sizeof(typeof(*p)) =sizeof(int) = 4sizeof(p) = sizeof(typeof(p)) =sizeof(int *) = 48、int a[10];sizeof(a) = sizeof(typeof(a)) = sizeof(int [10]) = 40sizeof(&amp;a) = sizeof(typeof(&amp;a)) = sizeof(typeof(a)*) = sizeof(typeof(int[10])*) =sizeof(int* *) sizeof(int **) = 4sizeof(a[0]) = sizeof(typeof(a[0])) = sizeof(int) = 4sizeof(&amp;a[1]) = sizeof(typeof(&amp;a[1])) = sizeof(typeof(a[1])*) = sizeof(int *) = 4;9、short a = 5;sizeof(a) = 2;sizeof(&amp;a) = 4sizeof(a+1) = 4sizeof(a+1.0) = 810、int a[2][2];sizeof(a) = 16sizeof(a[0])= 8sizeof(a[0]+1)= 4sizeof(&amp;a[0]) = 4sizeof(*(*a[0]+1)) = sizeof(*(a[0][0]+1)) //这个表达式就是错的！ *a[0] =&gt;a[0][0] *(a[1]+2) = a[1][2]sizeof(a+1) = 4sizeof(*(a[0]+1)) = 4 简单理解二维数组与指针1234567891011121314151617181920212223242526272829int a[3][4] 含义 类型 数值a 整个数组 指针 tpyeof(a[0])* int[4]*ex：a+1 &amp;a[0] + 1 == &amp;a[1]a[0] 一维数组 指针 typeof(a[0][0])* int* ex：a[0]+1 &amp;a[0][0] + 1 == &amp;a[0][1]********&amp;a 指向一个 int[4][3]数组的指针 int[4][3]*&amp;a+1 指向a后的那个地址 X+48********&amp;a[0] 指针 int[4]*ex：&amp;a[0]+1 &amp;a[1]&amp;a[0][0] 一个地址 指针 typeof(a[0][0])*ex：&amp;a[0][0]+1 &amp;a[0][1]注意：*和&amp;同时出现就抵消 *(a+1) a[1]一维数组*(&amp;a[0]+1)*(&amp;a[1])(*(a+1)+2)+3*(a[1] +2)+3 a[1][2]+3*(&amp;a[1][0]+2)+3*(&amp;a[1][2])+3]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数组]]></title>
+    <url>%2F2018%2F09%2F06%2F%E6%95%B0%E7%BB%84%2F</url>
+    <content type="text"><![CDATA[define NUM 1024int a[NUM];//NUM 是一个符号常量！ ex: int a[4] = {1,2,3,4};a[4] = 5;//非法的 因为 此处 n为4 下标为 0 - 3！ 这样就是越界的！printf(“%d”,a[4]);//语句指逻辑上不合法 其在编译器中依然不会报错！ 那么a[4]会打什么呢？1、可能是一个随机的垃圾值！原因那块地址并没有被初始化 所以里面的值是之前的残留值！ 2、也可能出现段错误 即核心已转储！当你超过了能够访问的范围！操作系统为每一个进程都分配了一段进程空间当你的操作超出了这段空间 你就无法访问 系统就会拦截你！3、由于gcc编译器做了优化 会将相同类型的数据存放在连续的地址空间中，所以可能会打印下一个变量的值！ ex: int a[4]; 使用typeof来求 即 typeof（a） = int[4]typeof用来求一个变量或者常量的数据类型的！typeof(a) 是不是一个合法的数据类型？是，那可不可以使用该类型再定义一个数组？即typeof(a) b[10];即在定义或者构造了一个新的类型 typeof(b);b是什么？ 也是一个数组不过称之为二维数组！ 二维数组的地址问题之前讲过 数组名即 首地址！首地址： 这个变量占用内存空间的第一个字节的编号！对于一个二维数组a而言！a = &amp;a[0]= a[0] = &amp;a[0][0]每一次取一个对象的地址 其实 取的是整个对象的地址 只是这个地址不能描述！所以只能是首地址来描述！思考如何将数组元素全部初始化为0？将第一个初始化为0即可！int a[3][3] ={0}; 二维数组的越界问题int a[3][3] = {1,2,3,4,5,6,7,8,9};printf(“%d”,a[0][3]);4原因：a[n] 作为右值时 是从a这个地址上偏移 sizeof(a[0]) 个单位的 内存上的值！想想a[0]的含义是 数组的第0行！ 那么其值为 首地址！也代表一个一维数组名！a[0][3]即从a[0]这个地址上开始偏移！a[1][4] = 8 从a[1]这个地址上偏移 sizeof(a[1][0])个单位内存上的值！只是替换了数组名而已！现在的数组名 加了一个[]而已！ 对于二维数组而言是不存在的 ！在计算机中只存在 一维数组！因为存储关系 所以 二维数组可以直接当做一维数组使用！ 字符串:关键词：\0C语言中并无字符串这样的数据类型一般情况下使用字符数组来表示字符串，但是必须要有一个结束符 ‘\0’;下面的案例就是一个没有结束束符的字符数组不能称之为 字符串！ex: char str1[] = {‘h’,’e’,’l’,’l’,’o’,’!’};sizeof(str1) = 6;原因其有6个元素！字符数组的长度就是字符数组所占的内存空间大小 即sizeof(数组名)； 而字符串的长度 就是从首地址开始到 ‘\0’结束，不包括‘\0’;在实际生活中并不关注 字符数组的长度，更多是在乎字符串的长度。 ex: char str2[10] = {‘h’,’e’,’l’,’l’,’o’,’!’};//请问上述是不是一个字符串？ 是!原因：这个字符数组的长度为10 填充了6个 其他的默认为0 而 0 == ‘\0’! 我们用 ‘\0’来区分字符串和字符数组！ 一个字符数组中如果有’\0’则就是一个字符串！ 字符串的表示：用双引号引起来的内容就是字符串自动添加’\0’!ex： char str3[] = “123456”;//一个字符串 其长度为 6 占用空间即大小为7char str4[10] = “123456”//是一个字符串 其长度为 6 占用空间即大小为 10！12345678910char ch[] = &#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;&#125;; sizeof(ch) = ? 3 strlen(ch) = ?//strlen求字符串长度的函数！ 不确定因为不知道何时碰到&apos;\0&apos;; char ch[] =&quot;123&quot;; sizeof(ch) = ? 4 strlen(ch) = ? 3 char ch[] = &#123;&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;\0&apos;,&apos;5&apos;,&apos;6&apos;&#125;; sizeof(ch) = ? 6 strlen(ch) = ? 3 数组容量要求必须是正整数常量或常量表达式 memset(a,0,sizeof(a)); ===&gt; 将a指向的空间中 sizeof(a)==100个字节 清零 ★★★★除了清零作用外,一般不用memset 去操作非 字符数组123456789101112131415161718#include &lt;string.h&gt;strcpy: 将后一个字符串 拷贝到前一个字符串,从前一个字符串的第一个字符开始覆盖 char a[100] = &quot;skhsdjhjskdhjksdhjksdhjksd&quot;; char b[10] = &quot;hehehe&quot;; strcpy(a,b); ===&gt; a =&gt; hehehehjskdhjksdhjksdhjksd strncpy 将第二个字符串的前n个字符拷贝并覆盖 第一个字符串的前n个字符 如果第二个字符不够 n个 则自动补&apos;\0&apos; strncpy(a,b,2); //a ==&gt;hehsdjhjskdhjksdhjksdhjksd strncpy(a,b,8); // a==&gt; hehehe skdhjksdhjksdhjksd &apos;\0&apos;&apos;\0&apos;这里如果输出字符串则时hehehe因为遇到\0结束char str1[] = &quot;abcd&quot; ;char str2[2];strcpy(str2,&quot;123&quot;);printf(&quot;str1=%s\n&quot;,str1);printf(&quot;str2=%s\n&quot;,str2); 使用strcpy有个缺点：strcpy进行复制时，不进行数组越界的检查。str2数组只有2个字节，但是”123”却有4个字节，这是很明显的数组越界，但是GCC编译器编译中没有报错，也就是ctrcpy复制是不进行数组越界的检查。要避免这个问题，可以使用strncpy ，因为strncpy有参数n来限定复制的字节数。 strcat的作用是 将 src字符串(包括’\0’) 粘贴到 dest字符串后面,从dest字符串的 ‘\0’处开始粘贴要确保前一个字符数组的空间足够大否则 “段错误” 在等着你strncat 将src的前n个字符”拼接”到dest后面,并自定添加’\0’ “拼接”到前一个字符串后面,您要确保前一个字符数组的空间足够大否则 “段错误” 在等着你 strncat 将src的前n个字符”拼接”到dest后面,并自定添加’\0’ 使用strcpy有个缺点：strcpy进行复制时，不进行数组越界的检查。str2数组只有2个字节，但是”123”却有4个字节，这是很明显的数组越界，但是GCC编译器编译中没有报错，也就是ctrcpy复制是不进行数组越界的检查。要避免这个问题，可以使用strncpy ，因为strncpy有参数n来限定复制的字节数。字符串的比较,只能用strcmp来比较,不能用 == 实现自己的strlen strcpy strcat strcmp]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数据间的运算规则]]></title>
+    <url>%2F2018%2F09%2F05%2F%E8%BF%90%E7%AE%97%2F</url>
+    <content type="text"><![CDATA[优先级！ &gt; 算术&gt; 关系&gt; &amp;&amp; &gt; || &gt; 赋值 &gt;逗号 需要熟悉ascii：‘0’ 48 0x30‘a’ 97‘A’ 65 数据在内存中存储的形式被称为 补码,所以上述可以简记为正数的补码就是原码负数的补码是绝对值的原码取反加1(注意区别为了方便人看而带符号的形式是不会出现在计算机中的） 比如:0x123456存储是:0000 0000 0001 0010 0011 0100 0101 0110 -1 存储在内存中是:0000 0000 0000 0000 0000 0000 0000 0001 (1)1111 1111 1111 1111 1111 1111 1111 1110 (~1)1111 1111 1111 1111 1111 1111 1111 1111 (~1 + 1 == -1) 注意:内存中的数据是不存在符号位的,全都是数据位符号位只存在与编译器中 短型 —&gt; 长型 高字节补位短型有符号: 高字节补符号位短型无符号: 高字节补 0 有符号赋值给无符号数据遵守无符号数据默认比有符号数据范围大！char -128 - 127unsigned char 0-255最大数明显255 &gt; 127 所以认为无符号数据的表示范围大于 有符号数unsigned int a ;int b = -1;a = b;printf(“%d”,a); ＝&gt; -1 原因是 %d 打印有符号整型printf(“%u”,a); =&gt;0xFFFFFFFF;说明输出由编译器决定。 浮点常量并不是float 而是double输出格式： %[flags][width][.prec][F|N|h|l]type(最后才是类型） 浮点数据存储：N = (-1)^s 1.M 2^(E-偏置量）12345678910111213141516171819202122232425每一个数据对应的位类型 符号位s 阶码E 尾数 总位数 偏置量float 1 8 23 32 127double 1 11 52 64 1023``` 浮点数据如何转化为二进制数据：ex:float f = 12.4561、整数部分直接转化为二进制 12 = &gt; 11002、小数部分转化为二进制：拿小数部分乘以2依次取整数直到没有小数为止 0.456 =》.0111 0100 1011 1100 0011 0101 ........ 最多取23位即可3、将小数部分与整数部分整合 1100.0111 0100 1011 1100 0011 01014、移动小数点表示成1.M的形式 并记录移动了多少位 1.1000 1110 1001 0111 1000 0110 101 保留小数点后23位即可： 1.1000 1110 1001 0111 1000 011 左移了3位5、求阶码 在偏置量的基础上 加减 如果左移+ 位数 如果右移 -位数 E = 130 6、整合填充 s E M0 1000 0010 100 0 1110 1001 0111 1000 011将这个数据推回10进制 看看是多少？`-1^s x(1.尾数偏移（E-127,取出整数部分）)此时整数部分就是12尾数计算1100.01110 1001 0111 1000 01102^-1 +12^-2………….计算出的结果： 12.45599699039…并不是12.456 原因就是浮点数据的存储 有精度的损耗！]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[输入输出函数]]></title>
+    <url>%2F2018%2F09%2F05%2F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[getchar()解析getchar()//单个字符putchar()gets//字符串putsinclude &lt;stdio.h&gt;printf/scanfprintf():123456789%d 打印10进制整型的 有符号%u 打印10进制整型的 无符号%c 打印一个字符%x 打印16进制数据%o 打印八进制数据%f 打印浮点数据%s 打印字符串的%p 打印地址的%g 打印时不输出无意义的0 scanf() 注意： scanf 的结束标志1、遇到非法字符 输入结束 比如 你要输入的是%d 一个整型而你输入了’n’ 就结束2、遇到空白符 比如 空格 回车 tab …..3、输入的宽度到了 就结束 比如 %3d 只能输入一个三位数 如果输入21345就结束了。强调： 在scanf输入中 格式化 怎么写就必须怎么输入 不能有任何不一致否则会出错对于初学者只建议使用占位符不要使用 其他符号。ex:int a,b,c,d;scanf(“%d %d %d %d\n”,&amp;a,&amp;b,&amp;c,&amp;d);输入时必须输入： ex： 1 2 3 4(回车)scanf(“%d%d%d%d”,&amp;a,&amp;b,&amp;c,&amp;d);输入只要以空白符作为间隔即可。 ex:1 2 3 4 (回车) ex:1 (回车)2 (回车)3 (回车)4 (回车)]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>printf和scanf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux常用命令]]></title>
+    <url>%2F2018%2F08%2F27%2Flinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[库的使用]]></title>
+    <url>%2F2018%2F08%2F26%2F%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[jpeg图片显示使用了开源的库，编译时需要加-ljpeg这个就是动态库，还需将库放入开发板上，而编译时需要将jpeglib.h放到之前已经配置好的arm-linux-gcc 的那些文件夹bin：arm-linux。。。。。include：头文件lib：库share：似乎时man之类的说明文件]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>-使用库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[环境配置]]></title>
     <url>%2F2018%2F08%2F23%2F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[ubuntu配置交叉编译工具：压缩包：arm-2009q3.tar.bz2 /usr/local/目录下创建一个arm目录 1sudo mkdir /usr/local/arm 将arm-2009q3.tar.bz2解压到创建的目录中 1sudo tar -xvf arm-2009q3.tar.bz2 -C /usr/local/arm/ 将该目录下所有的交叉编译工具(一个一个？简便方法？),利用ln创建符号链接文件,以方便简写 1sudo ln -s arm-none-linux-gnueabi-gcc arm-linux-gcc 将交叉编译工具所在的路径添加到 PATH 1sudo vi /etc/profile 在文件末尾添加:1export PATH=$PATH:/usr/local/arm/arm-2009q3/bin 上述语句,添加到 /etc/profile中,重启后,整个系统有效添加到 ~/.profile中,重启后,当前要用户有效./bashrc和/etc/profile的区别 TFTP1234sudo apt-get install tftpd-hpasudo service tftpd-hpa startsudo service tftpd-hpa stopsudo service tftpd-hpa restart 123456sudo vi /etc/default/tftpd-hpa //配置文件TFTP_USERNAME=&quot;tftp&quot; //tftp服务的用户名 TFTP_DIRECTORY=&quot;/home/gec/tftp&quot; //文件只能在该目录中下载TFTP_ADDRESS=&quot;0.0.0.0:69&quot; // tftp服务器的地址和端口TFTP_OPTIONS=&quot;-l -c -s&quot; //tftp服务的选项,不用管照抄 开发板使用：12tftp -g -r filename tftp_server_addr //下载tftp -p -l filename tftp_server_addr //上传 -g get 获取文件-r 递归-p put 发送文件-l local 本地的 NFS1234sudo apt-get install nfs-kernel-server//服务端sudo apt install nfs-common //客户端sudo service nfs-kernel-server start// 启动这些服务均可使用：service + 服务(tab)可以补全 123sudo vim /etc/exports/home/csgec/nfs *(rw,sync,no_root_squash)//* 代表所有IP均可访问 配置好开发板和ubuntu的IP，开发板使用：mount ip:/home/csgec/nfs /mnt Sambahttps://blog.csdn.net/qq_33775402/article/details/79511339 Bash关于./bashrc的配置 隐藏绝对路径]]></content>
@@ -56,13 +206,5 @@
       <tags>
         <tag>hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Git+Hexo]]></title>
-    <url>%2F2018%2F04%2F30%2FGit-Hexo%2F</url>
-    <content type="text"><![CDATA[搭建前一直在看别人写的教程，就是不肯看官方的，觉得官方的教程肯定写的很难，很多软件也有自己的帮助和官方教程，但是我一般还是选择去查看别人的教程，总是觉得别人的写的就是通俗易懂，官方的就是难，大家搭建完后都喜欢给自己写个教程方便以后再次使用，但是写的时候会用自己能理解的语言去写，有时候他人难以理解。但是官方的教程争对的是所有需要安装的用户，其详细程度和易用性得到了众多用户的检验，根据自己的需求去参照官方教程其实是最节约时间的方法，而不要将时间浪费在阅读众多重复的个人教程上。]]></content>
-      <categories>
-        <category>学习有感</category>
-      </categories>
   </entry>
 </search>
