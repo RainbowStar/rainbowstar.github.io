@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[字节对齐]]></title>
+    <url>%2F2018%2F10%2F09%2F%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90%2F</url>
+    <content type="text"><![CDATA[http://www.cnblogs.com/clover-toeic/p/3853132.html12345678910struct A&#123; int a; char b; short c;&#125;;struct B&#123; char b; int a; short c;&#125;; sizeof(strcut A)值为8；sizeof(struct B)的值却是12 1) 结构体变量的首地址能够被其最宽基本类型成员的大小所整除； 2) 结构体每个成员相对结构体首地址的偏移量都是成员大小的整数倍，否则填充； 3) 结构体的总大小为结构体最宽基本类型成员大小的整数倍，否则填充； A = 4+1+1(根据条件2填充的)+2B = 1+3(根据条件2填充的)+4+2=10+2(根据条件3填充)]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[信号总结]]></title>
+    <url>%2F2018%2F10%2F08%2F%E4%BF%A1%E5%8F%B7%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown语法]]></title>
+    <url>%2F2018%2F09%2F13%2FMarkdown%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[注意：hexo中要注意空格 显示更多和代码展示1&lt;!-- more --&gt; 标题：注意空格一级标题二级标题三级标题四级标题五级标题六级标题强调斜体，_斜体_粗体，粗体加粗并斜体 删除线：这样来 删除一段文本 嵌套： 动物 水生动物陆生动物 猴子人 程序猿攻城狮产品狗 //这里需要注意，没有空行间隔，忽略降级引用标记射鸡虱 //这里需要注意，没有空行间隔，忽略降级引用标记 两栖类动物 大鳄鱼唐老鸭 两个回车结束引用,不在引用范围内了！ 表格： 列1 列2 列3 第1行 12 13 第2行 22 23 第3行 32 33 左对齐 右对齐 居中 Computer 5000 元 1台 Phone 1999 元 1部 链接：博客 标记作用：ctrl+a 引用： 你是？ 图片： 1234void main() &#123; printf(“Hello, Markdown.”); &#125; ONE ONE_ONR ONE_TWO TOW -列表展示 -列表展示 -列表展示]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[线程]]></title>
+    <url>%2F2018%2F09%2F13%2F%E7%BA%BF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[线程与进程的关系线程是一个进程的某个分支，一个进程至少应该有一个线程进程是操作系统分配资源的最小单元 线程是系统调度的最小单位！线程API函数1234567891011121314创建线程#include &lt;pthread.h&gt;int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);参数： thread 用于保存 线程号(需要创建) attr 创建线程的属性 一般默认属性填写 NULL void *(*start_routine) (void *) 函数指针 指针的名字start_routine 指向一个什么样的函数 一个返回 void* 指针 并有一个void*参数的函数！ 函数原型： void* 函数名（void *）; 指向线程的处理函数的指针！ arg 线程处理函数的参数！(需要会转换)返回值： 成功返回0 失败返回错误编码 即非0的数据 ！ 具体请解析！ 12345678910111213141516171819202122线程退出自杀 #include &lt;pthread.h&gt;void pthread_exit(void *retval);参数： 返回指针 作为线程函数的返回值 可以 pthread_jion接收！他杀 #include &lt;pthread.h&gt;int pthread_cancel(pthread_t thread);功能： 其实就是相当于一个线程给指定的线程发送一个“杀死”或“取消”信号 参数： thread 即指定的线程号 返回值： 成功返回0 失败返回错误码！0值 具体请解析注意： 线程收到这个信号并不一定会退出 这取决于线程的属性！int pthread_setcancelstate(int state, int *oldstate);功能： 设置线程取消的属性参数： state 要设置的属性 PTHREAD_CANCEL_ENABLE 可被别人取消 PTHREAD_CANCEL_DISABLE 不可被别人取消 oldstate 指定保存旧属性的变量的地址返回值： 成功返回0 失败返回错误码！0值 12345678910111213141516171819202122等待线程退出 #include &lt;pthread.h&gt;int pthread_join(pthread_t thread, void **retval);参数： thread 指定要等待那个线程退出 retval 二级指针 执行线程退出的值！ 也就是 pthread_exit 的参数 成功： 返回0 失败返回错误码！0值 注意： pthread_join 有两个作用： 第一个： 阻塞 直到等待的线程退出 第二个： 线程退出并不代表资源回收 其可以回收资源 这个取决于线程的一个属性： detach state 分离属性！ PTHREAD_CREATE_DETACHED : detach state 分离状态 他死了 资源自动释放 PTHREAD_CREATE_JOINABLE : joinable state 这种状态需要 该函数来回收资源 如果不指定则默认该状态！#include &lt;pthread.h&gt;int pthread_detach(pthread_t thread);功能： 将指定的线程设置为 detach 属性 参数：指定 线程的 id 返回值：成功返回0 失败返回错误码注意：如果线程已经处于分离状态再次设置分离状态 会导致状态不确定性 应禁止设置多次！]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[共享内存和信号量]]></title>
+    <url>%2F2018%2F09%2F13%2F%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E5%92%8C%E4%BF%A1%E5%8F%B7%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[123456789函数汇总： 消息队列 信号量： 共享内存头文件 &lt;sys/msg.h&gt; &lt;sys/sem.h&gt; &lt;sys/shm.h&gt;创建或打开IPC msgget() semget() shmget() ***get()控制IPC操作 msgctl() semctl() shmctl() ***ctlIPC操作函数 msgsnd/msgrcv semop shmat/shmdt 12345678910#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;key_t ftok(const char *pathname, int proj_id);功能：用来生成一个唯一的System V IPC对象的KEY!原理: 生成算法 是用一个已经存在的路径名 和一个整数组成和一个 key_t!参数： pathname 一个已经存在的路径 proj_id 一个整数标志返回值：成功返回一个 键！ 失败返回-1 同时 errno被设置！ ex: p1 与 p2 进行通信 则p1 与 p2 的钥匙要相同 如何做？ p1：key_t p1_key = ftok(“/home”,122);p2: key_t p2_key = ftok(“/home”,122);要保持一模一样！ 共享内存在内核或者设备内存中开辟一块空间进程A 可以将这块内存映射到自己的进程空间进程B 也可以将这段空间那么如果A 修改了 这个空间的内容，就对应的修改了B中的内容！映射： 形成一一对应的关系API函数1234567891011创建或者打开一个共享内存 #include &lt;sys/ipc.h&gt;#include &lt;sys/shm.h&gt;int shmget(key_t key, size_t size, int shmflg);参数： key: 获取的钥匙 size 共享内存的大小 shmflg 标志位 1、创建IPC_CREAT | 权限位 2、 0 打开 返回值： 成功返回共享内存的id 失败返回-1 错误被存放于errno 12345678910111213映射/解映射#include &lt;sys/types.h&gt;#include &lt;sys/shm.h&gt;void *shmat(int shmid, const void *shmaddr, int shmflg);参数： shmid:共享内存的id shmaddr NULL 由操作系统自行分配 shmflg 映射标志 1、SHM_RDONLY 只读映射 2、0 读写 返回值： 成功返回映射区域的首地址 失败返回 NULL 错误存放在 errnoint shmdt(const void *shmaddr);参数： 映射区域的首地址！ 12345678910对于共享内存的操作控制 #include &lt;sys/ipc.h&gt;#include &lt;sys/shm.h&gt;int shmctl(int shmid, int cmd, struct shmid_ds *buf);参数： shmid 共享内存id cmd 当 cmd == IPC_RMID 时写NULL返回值： 成功返回 0 失败返回-1 错误存放在errno ##信号量如果有两个或者两个以上的进程访问同一块共享资源（可以是硬件 也可以是软件）！并且这个资源的访问具有排他性 ，那么我们就需要保证这个资源访问的时候 是有序访问 否则会出现不可预知结果！ 进程中不同线程进行同步机制的一种手段！ API函数12345678910111213a、创建一个信号量#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/sem.h&gt;int semget(key_t key, int nsems, int semflg);参数： key : 获取的钥匙 nsems: 信号量的个数 如果不要创建信号量集只要打开 这个参数的值应该为0 一旦创建该值不可更改！ semflg: 标志 1、创建 IPC_CREAT | 权限位 2、打开 0 返回值： 成功返回信号量集的id,失败返回-1 错误存储在 errno 1234567891011121314151617181920212223242526b、信号量操作函数 #include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/sem.h&gt;int semctl(int semid, int semnum, int cmd, ...);参数： semid 信号量集的id semnum 要操作其中的那个信号量即数组下标 [0 - nsems-1] cmd： 操作指令 常用的有： GETVAL:获取第几个信号量的值 SETVAL:设置第几个信号量的值 GETALL:获取所有信号量的值 SETALL: 设置所有信号量的值 IPC_RMID 删除信号量 ... 拓展的参数 可有可无 具体与 cmd有关！ 当cmd == IPC_RMID 时 第四个参数不要 当cmd == GETVAL 时 第四个参数也不要 返回值就是这个信号量的值！ 当cmd == SETVAL 第四个参数就是我要设置的值 当cmd == GETALL 第四个参数就是要保存每个信号量的地址 即 ushrot arr[] 当cmd == SETALL 第四个参数 就是要设置每个信号量的值的数组名 当cmd == IPC_SET 即设置这个信号量的属性 则第四个参数就是 struct semid_ds 的指针！ 当cmd == IPC_STAT 即获取这个信号量的属性 第四个参数表示将属性存放在这个地址中！ 返回值： 具体情况具体分析 12345678910111213141516171819202122232425262728c、PV 操作PV 操作是使用一个结构体(这个结构体包含在头文件中，定义一个结构体变量即可)来实现选择#include &lt;sys/types.h&gt;#include &lt;sys/ipc.h&gt;#include &lt;sys/sem.h&gt;struct sembuf&#123; unsigned short sem_num; /* semaphore number */ 指哪一个信号量 short sem_op; /* semaphore operation */ 信号量的操作 是一个 有符号的short类型 即做了相关操作后 semval = 原semval + sem_op sem_op &gt;0 表示 V 操作 一般会置为 +1 ！ ste_op &lt;0 表示 P操作 一般会置为 -1 ste_op ==0 自己尝试 看看是否就会阻塞！ short sem_flg; /* operation flags */ 操作标志： 0 表示默认 IPC_NOWAIT 非阻塞 如果是P操作 信号量没有获取到则直接走人 返回-1 表示不能获取！ SEM_UNDO 撤销 这个标志意义重大！ 为了防止进程带锁退出 如果设置了这个标志 内核会额外的记录该进程的PV 操作 当进程退出时 会还原！&#125;int semop(int semid, struct sembuf *sops, unsigned nsops);参数： semid 信号量集id sops: 操作选择的结构体指针 nsops:对几个信号量进行PV 表示有多少个信号量进行PV 操作 一般写一个1 ！返回值：成功返回0 失败返回-1 P操作和v操作如果一个进程需要等待即获取信号量，那么将会测试这个信号量的值 如果其值大于0 则信号量的值 -1该进程就会去访问这个资源，如果该信号量的值 等于0 那么这个进程将会阻塞等待信号量的到来！这就是信号量所说的 P操作 即Proberen 尝试！如果是互斥信号量 即互斥锁 就叫做 lock上锁！释放一个信号量如果一个进程使用完共享资源就需要释放 ，释放一个信号量时 如果当前有进程因等待信号量而被阻塞 那么其第一个将会恢复执行来访问资源，如果没有进程因等待而阻塞 那么信号量的值将+1这就是信号量中所说的 V操作 即 Verhogen 增加如果是互斥信号量 即互斥锁 就叫做 unlock 解锁]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[typedef]]></title>
     <url>%2F2018%2F09%2F11%2Ftypedef%2F</url>
     <content type="text"><![CDATA[define Type_D inttypedef int Type_T使用上述两个类型分别定义了两个变量Type_D a,b;Type_T x,y; 请问 a b x y分别是什么类型，使用 #define 与 typeof的区别是什么？那个更加好？typeof(a) = int*typeof(b) = int define 是字符替换int a,b; =&gt; int a,b; *号结合性！ typeof(x) = inttypeof(y) = int（int*） x,y;//但是语法不支持 编译不会过 C语言不可以给类型加()?注意：(类型说明符) 这是类型强转！]]></content>
@@ -27,7 +64,7 @@
   <entry>
     <title><![CDATA[文档要求]]></title>
     <url>%2F2018%2F09%2F11%2F%E6%96%87%E6%A1%A3%E8%A6%81%E6%B1%82%2F</url>
-    <content type="text"><![CDATA[函数使用： 头文件 参数、说明 使用例子 特殊情况]]></content>
+    <content type="text"><![CDATA[如何做笔记？ 函数使用： 头文件 参数、说明 使用例子(贴代码) 特殊情况 2.编写代码时函数描述：12345678910111213/************************************************* Function: // 函数名称 Description: // 函数功能、性能等的描述 Calls: // 被本函数调用的函数清单 Called By: // 调用本函数的函数清单 Table Accessed: // 被访问的表（此项仅对于牵扯到数据库操作的程序） Table Updated: // 被修改的表（此项仅对于牵扯到数据库操作的程序） Input: // 输入参数说明，包括每个参数的作 // 用、取值说明及参数间关系。 Output: // 对输出参数的说明。 Return: // 函数返回值的说明 Others: // 其它说明*************************************************/ 3.用正确的反义词组命名具有互斥意义的变量或相反动作的函数:1add / remove begin / end create / destroy insert / delete first / last get / release increment / decrement put / get add / delete lock / unlock open / close min / max old / new start / stop next / previous source / target show / hide send / receive source / destination cut / paste up / down 4.编写代码说明：123456789/************************************************* Copyright (C), 1988-1999, Huawei Tech. Co., Ltd. File name: // 文件名 Author: Version: Date: // 作者、版本及完成日期 Description: // 用于详细说明此程序文件完成的主要功能，与其他块 // 或函数的接口，输出值、取值范围、含义及参数间的控 // 制、顺序、独立或依赖等关系 Others: // 其它内容的说明 Function List: // 主要函数列表，每条记录应包括函数名及功能简要说明]]></content>
       <categories>
         <category>C语言</category>
       </categories>
@@ -46,7 +83,7 @@
   <entry>
     <title><![CDATA[链接保存]]></title>
     <url>%2F2018%2F09%2F10%2F%E9%93%BE%E6%8E%A5%E4%BF%9D%E5%AD%98%2F</url>
-    <content type="text"><![CDATA[arduino极客工坊项目实验室数据结构和算法排序算法参考 书籍保存 linux 递归一下]]></content>
+    <content type="text"><![CDATA[arduino极客工坊项目实验室数据结构和算法排序算法参考 书籍保存 linux 递归一下 嵌入式学习网站守望者:什么都有点 linux别人的blog 嵌入式别人的blog LINUX什么都有点 嵌入式别人的blog2 51cto 吴川斌 左耳朵耗子 他人资料整理1 他人资料整理2 二次元程序员 github教程https://git-scm.com/book/zh/v2/ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 成为理想程序员 C语言资料大全 grub使用教程http://wiki.ubuntu.org.cn/GRUB%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B ALL in one:make a kinds of sys boot from U盘https://www.aioboot.com/en/how-to-use/ 字节对齐 别出心裁Linux命令 cheat 极品飞车]]></content>
       <categories>
         <category>C语言</category>
       </categories>
@@ -54,7 +91,7 @@
   <entry>
     <title><![CDATA[信号]]></title>
     <url>%2F2018%2F09%2F07%2F%E4%BF%A1%E5%8F%B7%2F</url>
-    <content type="text"><![CDATA[12345678910111213141516171819202122SIGHUP 1 Term Hangup detected on controlling terminal or death of controlling process 在控制终端收到一个&quot;挂起&quot;或控制进程死亡时会收到该信号 SIGINT 2 Term Interrupt from keyboard 终止进程运行CTRL+C SIGQUIT 3 Core Quit from keyboard 发送停止信息并停止进程执行 CTRL+Z SIGILL 4 Core Illegal Instruction 遇到非法指令时产生的信号 SIGABRT 6 Core Abort signal from abort(3) 进程非正常终止时产生的信号 SIGFPE 8 Core Floating point exception 遇到一个浮点错误 a/0 SIGKILL 9 Term Kill signal 杀死进程 SIGSEGV 11 Core Invalid memory reference 非法内存引用(段错误) SIGPIPE 13 Term Broken pipe: write to pipe with no readers当管道写端写入数据时,管道读端收到该信号 SIGALRM 14 Term Timer signal from alarm(2) 定时器信号,超时信号 SIGTERM 15 Term Termination signal 终止信号 CTRL+\ SIGUSR1 30,10,16 Term User-defined signal 1 用户自定义信号1 SIGUSR2 31,12,17 Term User-defined signal 2 用户自定义信号2 SIGCHLD 20,17,18 Ign Child stopped or terminated子进程退出时,父进程收到该信号 SIGCONT 19,18,25 Cont Continue if stopped 继续执行一个挂起的进程 SIGSTOP 17,19,23 Stop Stop process 停止一个进程 SIGTSTP 18,20,24 Stop Stop typed at terminal 从终端上发起停止信号 SIGTTIN 21,21,26 Stop Terminal input for background process 后台试图从控制台输入 SIGTTOU 22,22,27 Stop Terminal output for background process 后台试图从控制台输出 12345678910111213141516171819202122232425262728293031323334353637#include&lt;stdio.h&gt;#include &lt;sys/types.h&gt;#include &lt;signal.h&gt;typedef void (*sighandler_t)(int);int flg = 1;void my_sig_fun(int sig)&#123; printf(&quot;recv signal is:%d\n&quot;,sig); switch(sig) &#123; case SIGINT: printf(&quot;I can go out\n&quot;); flg = 0; break; case SIGALRM: printf(&quot;time out\n&quot;); flg = 0; break; &#125;&#125;int main(int argc,char *argv[])&#123; signal(SIGINT,my_sig_fun); signal(SIGALRM,my_sig_fun); alarm(5); //kill(atoi(argv[1]),SIGKILL);//atoi函数,是用来将给定的数字字符串转换为整数 while(flg) &#123; printf(&quot;zhuan bei shang!!\n&quot;); sleep(1); &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[常见信号12345678910111213141516171819202122SIGHUP 1 Term Hangup detected on controlling terminal or death of controlling process 在控制终端收到一个&quot;挂起&quot;或控制进程死亡时会收到该信号 SIGINT 2 Term Interrupt from keyboard 终止进程运行CTRL+C SIGQUIT 3 Core Quit from keyboard 发送停止信息并停止进程执行 CTRL+Z SIGILL 4 Core Illegal Instruction 遇到非法指令时产生的信号 SIGABRT 6 Core Abort signal from abort(3) 进程非正常终止时产生的信号 SIGFPE 8 Core Floating point exception 遇到一个浮点错误 a/0 SIGKILL 9 Term Kill signal 杀死进程 SIGSEGV 11 Core Invalid memory reference 非法内存引用(段错误) SIGPIPE 13 Term Broken pipe: write to pipe with no readers当管道写端写入数据时,管道读端收到该信号 SIGALRM 14 Term Timer signal from alarm(2) 定时器信号,超时信号 SIGTERM 15 Term Termination signal 终止信号 CTRL+\ SIGUSR1 30,10,16 Term User-defined signal 1 用户自定义信号1 SIGUSR2 31,12,17 Term User-defined signal 2 用户自定义信号2 SIGCHLD 20,17,18 Ign Child stopped or terminated子进程退出时,父进程收到该信号 SIGCONT 19,18,25 Cont Continue if stopped 继续执行一个挂起的进程 SIGSTOP 17,19,23 Stop Stop process 停止一个进程 SIGTSTP 18,20,24 Stop Stop typed at terminal 从终端上发起停止信号 SIGTTIN 21,21,26 Stop Terminal input for background process 后台试图从控制台输入 SIGTTOU 22,22,27 Stop Terminal output for background process 后台试图从控制台输出 12345678910111213141516171819202122232425262728293031323334353637#include&lt;stdio.h&gt;#include &lt;sys/types.h&gt;#include &lt;signal.h&gt;typedef void (*sighandler_t)(int);int flg = 1;void my_sig_fun(int sig)&#123; printf(&quot;recv signal is:%d\n&quot;,sig); switch(sig) &#123; case SIGINT: printf(&quot;I can go out\n&quot;); flg = 0; break; case SIGALRM: printf(&quot;time out\n&quot;); flg = 0; break; &#125;&#125;int main(int argc,char *argv[])&#123; signal(SIGINT,my_sig_fun); signal(SIGALRM,my_sig_fun); alarm(5); //kill(atoi(argv[1]),SIGKILL);//atoi函数,是用来将给定的数字字符串转换为整数 while(flg) &#123; printf(&quot;zhuan bei shang!!\n&quot;); sleep(1); &#125; return 0;&#125;]]></content>
       <categories>
         <category>C语言</category>
       </categories>
@@ -78,7 +115,7 @@
   <entry>
     <title><![CDATA[排序算法]]></title>
     <url>%2F2018%2F09%2F07%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[代码已写，待归纳冒泡排序：快速排序：递归排序:选择排序：希尔排序：选择排序：]]></content>
+    <content type="text"><![CDATA[代码已写，待归纳参考：写给大家看的算法、218例冒泡排序：快速排序：递归排序:选择排序：希尔排序：选择排序：]]></content>
       <categories>
         <category>C语言</category>
       </categories>
@@ -137,7 +174,7 @@
   <entry>
     <title><![CDATA[linux常用命令]]></title>
     <url>%2F2018%2F08%2F27%2Flinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[解压：tar1234567891011总结*.tar 用 tar –xvf 解压*.gz 用 gzip -d或者gunzip 解压*.tar.gz和*.tgz 用 tar –xzf 解压*.bz2 用 bzip2 -d或者用bunzip2 解压*.tar.bz2用tar –xjf 解压*.Z 用 uncompress 解压*.tar.Z 用tar –xZf 解压*.rar 用 unrar e解压*.zip 用 unzip 解压一般带个v显示过程 1234567891011121314151617181920212223242526272829303132333435363738394041-c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。-z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出下面的参数-f是必须的-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。# tar -cf all.tar *.jpg 这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。# tar -rf all.tar *.gif 这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。# tar -uf all.tar logo.gif 这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。# tar -tf all.tar 这条命令是列出all.tar包中所有文件，-t是列出文件的意思# tar -xf all.tar 这条命令是解出all.tar包中所有文件，-x是解开的意思压缩tar –cvf jpg.tar *.jpg 将目录里所有jpg文件打包成tar.jpgtar –czf jpg.tar.gz *.jpg 将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gztar –cjf jpg.tar.bz2 *.jpg 将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2tar –cZf jpg.tar.Z *.jpg 将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Zrar a jpg.rar *.jpg rar格式的压缩，需要先下载rar for linuxzip jpg.zip *.jpg zip格式的压缩，需要先下载zip for linux grep]]></content>
   </entry>
   <entry>
     <title><![CDATA[库的使用]]></title>
@@ -153,7 +190,7 @@
   <entry>
     <title><![CDATA[环境配置]]></title>
     <url>%2F2018%2F08%2F23%2F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[ubuntu配置交叉编译工具：压缩包：arm-2009q3.tar.bz2 /usr/local/目录下创建一个arm目录 1sudo mkdir /usr/local/arm 将arm-2009q3.tar.bz2解压到创建的目录中 1sudo tar -xvf arm-2009q3.tar.bz2 -C /usr/local/arm/ 将该目录下所有的交叉编译工具(一个一个？简便方法？),利用ln创建符号链接文件,以方便简写 1sudo ln -s arm-none-linux-gnueabi-gcc arm-linux-gcc 将交叉编译工具所在的路径添加到 PATH 1sudo vi /etc/profile 在文件末尾添加:1export PATH=$PATH:/usr/local/arm/arm-2009q3/bin 上述语句,添加到 /etc/profile中,重启后,整个系统有效添加到 ~/.profile中,重启后,当前要用户有效./bashrc和/etc/profile的区别 TFTP1234sudo apt-get install tftpd-hpasudo service tftpd-hpa startsudo service tftpd-hpa stopsudo service tftpd-hpa restart 123456sudo vi /etc/default/tftpd-hpa //配置文件TFTP_USERNAME=&quot;tftp&quot; //tftp服务的用户名 TFTP_DIRECTORY=&quot;/home/gec/tftp&quot; //文件只能在该目录中下载TFTP_ADDRESS=&quot;0.0.0.0:69&quot; // tftp服务器的地址和端口TFTP_OPTIONS=&quot;-l -c -s&quot; //tftp服务的选项,不用管照抄 开发板使用：12tftp -g -r filename tftp_server_addr //下载tftp -p -l filename tftp_server_addr //上传 -g get 获取文件-r 递归-p put 发送文件-l local 本地的 NFS1234sudo apt-get install nfs-kernel-server//服务端sudo apt install nfs-common //客户端sudo service nfs-kernel-server start// 启动这些服务均可使用：service + 服务(tab)可以补全 123sudo vim /etc/exports/home/csgec/nfs *(rw,sync,no_root_squash)//* 代表所有IP均可访问 配置好开发板和ubuntu的IP，开发板使用：mount ip:/home/csgec/nfs /mnt Sambahttps://blog.csdn.net/qq_33775402/article/details/79511339 Bash关于./bashrc的配置 隐藏绝对路径]]></content>
+    <content type="text"><![CDATA[ubuntu配置交叉编译工具：压缩包：arm-2009q3.tar.bz2 /usr/local/目录下创建一个arm目录 1sudo mkdir /usr/local/arm 将arm-2009q3.tar.bz2解压到创建的目录中 1sudo tar -xvf arm-2009q3.tar.bz2 -C /usr/local/arm/ 将该目录下所有的交叉编译工具(一个一个？简便方法？),利用ln创建符号链接文件,以方便简写 1sudo ln -s arm-none-linux-gnueabi-gcc arm-linux-gcc 将交叉编译工具所在的路径添加到 PATH 1sudo vi /etc/profile 在文件末尾添加:1export PATH=$PATH:/usr/local/arm/arm-2009q3/bin 上述语句,添加到 /etc/profile中,重启后,整个系统有效添加到 ~/.profile中,重启后,当前要用户有效./bashrc和/etc/profile的区别 TFTP1234sudo apt-get install tftpd-hpasudo service tftpd-hpa startsudo service tftpd-hpa stopsudo service tftpd-hpa restart 123456sudo vi /etc/default/tftpd-hpa //配置文件TFTP_USERNAME=&quot;tftp&quot; //tftp服务的用户名 TFTP_DIRECTORY=&quot;/home/gec/tftp&quot; //文件只能在该目录中下载TFTP_ADDRESS=&quot;0.0.0.0:69&quot; // tftp服务器的地址和端口TFTP_OPTIONS=&quot;-l -c -s&quot; //tftp服务的选项,不用管照抄 开发板使用：12tftp -g -r filename tftp_server_addr //下载tftp -p -l filename tftp_server_addr //上传 -g get 获取文件-r 递归-p put 发送文件-l local 本地的 NFS1234sudo apt-get install nfs-kernel-server//服务端sudo apt install nfs-common //客户端sudo service nfs-kernel-server start// 启动这些服务均可使用：service + 服务(tab)可以补全 123sudo vim /etc/exports/home/csgec/nfs *(rw,sync,no_root_squash)//* 代表所有IP均可访问 配置好开发板和ubuntu的IP，开发板使用：mount ip:/home/csgec/nfs /mnt Sambahttps://blog.csdn.net/qq_33775402/article/details/79511339 Bash关于./bashrc的配置更新命令：source ？？？？ 隐藏绝对路径]]></content>
       <categories>
         <category>日积月累</category>
       </categories>
@@ -183,17 +220,6 @@
         <tag>头文件</tag>
         <tag>动态库</tag>
         <tag>静态库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[绝地求生之食物锦囊]]></title>
-    <url>%2F2018%2F08%2F23%2F%E7%BB%9D%E5%9C%B0%E6%B1%82%E7%94%9F%E4%B9%8B%E9%A3%9F%E7%89%A9%E9%94%A6%E5%9B%8A%2F</url>
-    <content type="text"><![CDATA[零食候选：香肠、豆干、花生、葡萄干……(continue) 水果候选：香蕉(门口水果店挑选较为成熟的)、苹果(云南邵通苹果或者阿克苏苹果，糖分高) 面食候选：全麦面包、面、麦片。 搭配原则：每餐必须有面食,根据身体情况补充需要的能量 早：全麦面包—&gt;水果—&gt;酸奶—&gt;零食 中：面或饭 补充：全麦面包、葡萄干、水果 晚：全麦面包、麦片加豆奶。 补充：酸奶、水果(不要吃难消化的食物,对睡眠不好)]]></content>
-      <categories>
-        <category>绝地求生系列</category>
-      </categories>
-      <tags>
-        <tag>食物</tag>
       </tags>
   </entry>
   <entry>

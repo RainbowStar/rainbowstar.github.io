@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="函数使用：   头文件 参数、说明 使用例子 特殊情况">
+<meta name="description" content="如何做笔记？  函数使用：   头文件 参数、说明 使用例子(贴代码) 特殊情况">
 <meta name="keywords" content="文档规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文档要求">
 <meta property="og:url" content="http://yoursite.com/2018/09/11/文档要求/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="函数使用：   头文件 参数、说明 使用例子 特殊情况">
+<meta property="og:description" content="如何做笔记？  函数使用：   头文件 参数、说明 使用例子(贴代码) 特殊情况">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-11T08:47:25.407Z">
+<meta property="og:updated_time" content="2018-10-08T03:20:54.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文档要求">
-<meta name="twitter:description" content="函数使用：   头文件 参数、说明 使用例子 特殊情况">
+<meta name="twitter:description" content="如何做笔记？  函数使用：   头文件 参数、说明 使用例子(贴代码) 特殊情况">
 
 
 
@@ -272,7 +272,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Star">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/spike.png">
+      <meta itemprop="image" content="/images/ed.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -356,15 +356,20 @@
       
 
       
-        <ol>
+        <p>如何做笔记？</p>
+<ol>
 <li>函数使用：</li>
 </ol>
 <ul>
 <li>头文件</li>
 <li>参数、说明</li>
-<li>使用例子</li>
-<li>特殊情况</li>
+<li>使用例子(贴代码)</li>
+<li>特殊情况<a id="more"></a>
+2.编写代码时函数描述：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*************************************************   </span><br><span class="line">Function:       // 函数名称   </span><br><span class="line">Description:    // 函数功能、性能等的描述   </span><br><span class="line">Calls:          // 被本函数调用的函数清单   </span><br><span class="line">Called By:      // 调用本函数的函数清单   </span><br><span class="line">Table Accessed: // 被访问的表（此项仅对于牵扯到数据库操作的程序）   </span><br><span class="line">Table Updated:  // 被修改的表（此项仅对于牵扯到数据库操作的程序）   </span><br><span class="line">Input:          // 输入参数说明，包括每个参数的作                   </span><br><span class="line">				// 用、取值说明及参数间关系。   </span><br><span class="line">Output:         // 对输出参数的说明。   </span><br><span class="line">Return:         // 函数返回值的说明   </span><br><span class="line">Others:         // 其它说明</span><br><span class="line">*************************************************/</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>3.用正确的反义词组命名具有互斥意义的变量或相反动作的函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add / remove       begin / end        create / destroy  insert / delete    first / last       get / release increment / decrement                 put / get add / delete       lock / unlock      open / close min / max          old / new          start / stop next / previous    source / target    show / hide send / receive     source / destination cut / paste        up / down</span><br></pre></td></tr></table></figure></p>
+<p>4.编写代码说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*************************************************   </span><br><span class="line">Copyright (C), 1988-1999, Huawei Tech. Co., Ltd.   </span><br><span class="line">File name:      // 文件名   </span><br><span class="line">Author:       Version:        Date: // 作者、版本及完成日期   </span><br><span class="line">Description:    // 用于详细说明此程序文件完成的主要功能，与其他块                   </span><br><span class="line">				// 或函数的接口，输出值、取值范围、含义及参数间的控                   </span><br><span class="line">				// 制、顺序、独立或依赖等关系   </span><br><span class="line">Others:         // 其它内容的说明   </span><br><span class="line">Function List:  // 主要函数列表，每条记录应包括函数名及功能简要说明</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -465,7 +470,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/spike.png"
+                src="/images/ed.png"
                 alt="Star" />
             
               <p class="site-author-name" itemprop="name">Star</p>
@@ -479,7 +484,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -490,7 +495,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -501,7 +506,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
