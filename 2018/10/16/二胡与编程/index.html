@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="123456789函数汇总：					消息队列			信号量：		共享内存头文件				&amp;lt;sys/msg.h&amp;gt;		&amp;lt;sys/sem.h&amp;gt;		&amp;lt;sys/shm.h&amp;gt;创建或打开IPC		  msgget()			semget()		shmget()      ***get()控制IPC操作			msgctl()			semctl()		shmctl()	  ***ct">
+<meta name="description" content="你就已经初步理解了编译器是什么，你只需要在将来加深这种理解。 –yinwang  小时候去学二胡，从来没有认真练过曲子，也没有感到高兴的时刻，但是花了很多钱，那时候用的是父母的，不怎么心疼。学了5年，应该是初步理解二胡的一些技巧，而在大一的时候我花了很多时间去加深了一些理解。后面真的能全身心的投入去演奏，感受曲子中的各种感情。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="共享内存和信号量">
-<meta property="og:url" content="http://yoursite.com/2018/09/13/共享内存和信号量/index.html">
+<meta property="og:title" content="二胡与编程">
+<meta property="og:url" content="http://yoursite.com/2018/10/16/二胡与编程/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="123456789函数汇总：					消息队列			信号量：		共享内存头文件				&amp;lt;sys/msg.h&amp;gt;		&amp;lt;sys/sem.h&amp;gt;		&amp;lt;sys/shm.h&amp;gt;创建或打开IPC		  msgget()			semget()		shmget()      ***get()控制IPC操作			msgctl()			semctl()		shmctl()	  ***ct">
+<meta property="og:description" content="你就已经初步理解了编译器是什么，你只需要在将来加深这种理解。 –yinwang  小时候去学二胡，从来没有认真练过曲子，也没有感到高兴的时刻，但是花了很多钱，那时候用的是父母的，不怎么心疼。学了5年，应该是初步理解二胡的一些技巧，而在大一的时候我花了很多时间去加深了一些理解。后面真的能全身心的投入去演奏，感受曲子中的各种感情。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T03:25:36.009Z">
+<meta property="og:updated_time" content="2018-10-16T12:54:18.650Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="共享内存和信号量">
-<meta name="twitter:description" content="123456789函数汇总：					消息队列			信号量：		共享内存头文件				&amp;lt;sys/msg.h&amp;gt;		&amp;lt;sys/sem.h&amp;gt;		&amp;lt;sys/shm.h&amp;gt;创建或打开IPC		  msgget()			semget()		shmget()      ***get()控制IPC操作			msgctl()			semctl()		shmctl()	  ***ct">
+<meta name="twitter:title" content="二胡与编程">
+<meta name="twitter:description" content="你就已经初步理解了编译器是什么，你只需要在将来加深这种理解。 –yinwang  小时候去学二胡，从来没有认真练过曲子，也没有感到高兴的时刻，但是花了很多钱，那时候用的是父母的，不怎么心疼。学了5年，应该是初步理解二胡的一些技巧，而在大一的时候我花了很多时间去加深了一些理解。后面真的能全身心的投入去演奏，感受曲子中的各种感情。">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/13/共享内存和信号量/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/16/二胡与编程/"/>
 
 
 
 
 
-  <title>共享内存和信号量 | 难得入迷</title>
+  <title>二胡与编程 | 难得入迷</title>
   
 
 
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/共享内存和信号量/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/二胡与编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Star">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">共享内存和信号量</h1>
+          <h1 class="post-title" itemprop="name headline">二胡与编程</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T10:08:24+08:00">
-                2018-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T19:33:49+08:00">
+                2018-10-16
               </time>
             
 
@@ -355,20 +355,22 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">函数汇总：</span><br><span class="line">					消息队列			信号量：		共享内存</span><br><span class="line">头文件				&lt;sys/msg.h&gt;		&lt;sys/sem.h&gt;		&lt;sys/shm.h&gt;</span><br><span class="line"></span><br><span class="line">创建或打开IPC		  msgget()			semget()		shmget()      ***get()</span><br><span class="line"></span><br><span class="line">控制IPC操作			msgctl()			semctl()		shmctl()	  ***ctl</span><br><span class="line"></span><br><span class="line">IPC操作函数			msgsnd/msgrcv		semop			shmat/shmdt</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line"></span><br><span class="line">key_t ftok(const char *pathname, int proj_id);</span><br><span class="line">功能：用来生成一个唯一的System V IPC对象的KEY!</span><br><span class="line">原理: 生成算法 是用一个已经存在的路径名 和一个整数组成和一个 key_t!</span><br><span class="line">参数： pathname 一个已经存在的路径</span><br><span class="line">		proj_id 一个整数标志</span><br><span class="line">返回值：成功返回一个 键！</span><br><span class="line">		失败返回-1 同时 errno被设置！</span><br></pre></td></tr></table></figure>
-<p>ex: p1 与 p2 进行通信 则<br>p1 与 p2 的钥匙要相同 如何做？</p>
-<p>p1：key_t p1_key = ftok(“/home”,122);<br>p2: key_t p2_key = ftok(“/home”,122);<br>要保持一模一样！</p>
-<h2 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h2><p>在内核或者设备内存中开辟一块空间<br>进程A 可以将这块内存映射到自己的进程空间<br>进程B 也可以将这段空间<br>那么如果A 修改了 这个空间的内容，就对应的修改了B中的内容！<br>映射： 形成一一对应的关系<br>API函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">创建或者打开一个共享内存 </span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line">#include &lt;sys/shm.h&gt;</span><br><span class="line"></span><br><span class="line">int shmget(key_t key, size_t size, int shmflg);</span><br><span class="line">参数： key: 获取的钥匙 </span><br><span class="line">	  size 共享内存的大小 </span><br><span class="line">	  shmflg 标志位 </span><br><span class="line">	  1、创建IPC_CREAT | 权限位 </span><br><span class="line">	  2、 0 打开 </span><br><span class="line">返回值： 成功返回共享内存的id 失败返回-1 错误被存放于errno</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">映射/解映射</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/shm.h&gt;</span><br><span class="line"></span><br><span class="line">void *shmat(int shmid, const void *shmaddr, int shmflg);</span><br><span class="line">参数： shmid:共享内存的id </span><br><span class="line">		shmaddr NULL 由操作系统自行分配 </span><br><span class="line">		shmflg 映射标志 </span><br><span class="line">			1、SHM_RDONLY 只读映射</span><br><span class="line">			2、0 读写 </span><br><span class="line">返回值： 成功返回映射区域的首地址 失败返回 NULL 错误存放在 errno</span><br><span class="line">int shmdt(const void *shmaddr);</span><br><span class="line">参数： 映射区域的首地址！</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">对于共享内存的操作控制 </span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line">#include &lt;sys/shm.h&gt;</span><br><span class="line"></span><br><span class="line">int shmctl(int shmid, int cmd, struct shmid_ds *buf);</span><br><span class="line">参数： shmid 共享内存id </span><br><span class="line">		cmd </span><br><span class="line">	  当 cmd == IPC_RMID 时写NULL</span><br><span class="line">返回值： </span><br><span class="line">	成功返回 0 失败返回-1 错误存放在errno</span><br></pre></td></tr></table></figure>
-<p>##信号量<br>如果有两个或者两个以上的进程访问同一块共享资源（可以是硬件 也可以是软件）！并且这个资源的访问<br>具有排他性 ，那么我们就需要保证这个资源访问的时候 是有序访问 否则会出现不可预知结果！</p>
-<p>进程中不同线程进行同步机制的一种手段！</p>
-<p>API函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a、创建一个信号量</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line">#include &lt;sys/sem.h&gt;</span><br><span class="line"></span><br><span class="line">int semget(key_t key, int nsems, int semflg);</span><br><span class="line">参数： key : 获取的钥匙 </span><br><span class="line">	   nsems: 信号量的个数 </span><br><span class="line">		如果不要创建信号量集只要打开 这个参数的值应该为0 一旦创建该值不可更改！</span><br><span class="line">	   semflg: 标志 </span><br><span class="line">			1、创建 IPC_CREAT | 权限位 </span><br><span class="line">			2、打开 0 </span><br><span class="line">返回值： 成功返回信号量集的id,失败返回-1 错误存储在 errno</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">b、信号量操作函数 </span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line">#include &lt;sys/sem.h&gt;</span><br><span class="line"></span><br><span class="line">int semctl(int semid, int semnum, int cmd, ...);</span><br><span class="line">参数： </span><br><span class="line">	semid 信号量集的id </span><br><span class="line">	semnum 要操作其中的那个信号量即数组下标 [0 - nsems-1]</span><br><span class="line">	cmd： 操作指令 常用的有：</span><br><span class="line">		GETVAL:获取第几个信号量的值</span><br><span class="line">		SETVAL:设置第几个信号量的值</span><br><span class="line">		GETALL:获取所有信号量的值</span><br><span class="line">		SETALL: 设置所有信号量的值 </span><br><span class="line">		IPC_RMID 删除信号量 </span><br><span class="line">	... 拓展的参数 可有可无 具体与 cmd有关！</span><br><span class="line">	</span><br><span class="line">		当cmd == IPC_RMID 时 第四个参数不要 </span><br><span class="line">		当cmd == GETVAL 时 第四个参数也不要 返回值就是这个信号量的值！</span><br><span class="line">		当cmd == SETVAL 第四个参数就是我要设置的值</span><br><span class="line">		当cmd == GETALL 第四个参数就是要保存每个信号量的地址 即 ushrot arr[] </span><br><span class="line">		当cmd == SETALL 第四个参数 就是要设置每个信号量的值的数组名 </span><br><span class="line">		当cmd == IPC_SET 即设置这个信号量的属性 则第四个参数就是 struct semid_ds 的指针！</span><br><span class="line">		当cmd == IPC_STAT 即获取这个信号量的属性 第四个参数表示将属性存放在这个地址中！</span><br><span class="line">		</span><br><span class="line">返回值： 具体情况具体分析</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">c、PV 操作</span><br><span class="line">PV 操作是使用一个结构体(这个结构体包含在头文件中，定义一个结构体变量即可)来实现选择</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br><span class="line">#include &lt;sys/sem.h&gt;</span><br><span class="line">struct sembuf&#123;</span><br><span class="line">	unsigned short sem_num;  /* semaphore number */ </span><br><span class="line">		指哪一个信号量</span><br><span class="line">	short          sem_op;   /* semaphore operation */</span><br><span class="line">		信号量的操作 是一个 有符号的short类型 </span><br><span class="line">		 即做了相关操作后 semval = 原semval + sem_op</span><br><span class="line">		 sem_op &gt;0 表示 V 操作 一般会置为   +1 ！</span><br><span class="line">		 ste_op &lt;0 表示 P操作 一般会置为    -1</span><br><span class="line">		 ste_op ==0 自己尝试 看看是否就会阻塞！</span><br><span class="line">	short          sem_flg;  /* operation flags */</span><br><span class="line">		操作标志：</span><br><span class="line">		0 表示默认 </span><br><span class="line">		IPC_NOWAIT 非阻塞 </span><br><span class="line">			如果是P操作 信号量没有获取到则直接走人 返回-1 表示不能获取！</span><br><span class="line">		SEM_UNDO 撤销 这个标志意义重大！</span><br><span class="line">			为了防止进程带锁退出 如果设置了这个标志 </span><br><span class="line">			内核会额外的记录该进程的PV 操作 当进程退出时 会还原！</span><br><span class="line">&#125;</span><br><span class="line">int semop(int semid, struct sembuf *sops, unsigned nsops);</span><br><span class="line">参数：   semid 信号量集id </span><br><span class="line">		sops: 操作选择的结构体指针</span><br><span class="line">		nsops:对几个信号量进行PV 表示有多少个信号量进行PV 操作 一般写一个1 ！</span><br><span class="line">返回值：成功返回0 失败返回-1</span><br></pre></td></tr></table></figure>
-<p>P操作和v操作<br>如果一个进程需要等待即获取信号量，那么将会测试这个信号量的值 如果其值大于0 则信号量的值 -1<br>该进程就会去访问这个资源，如果该信号量的值 等于0 那么这个进程将会阻塞等待信号量的到来！<br>这就是信号量所说的 P操作  即Proberen 尝试！<br>如果是互斥信号量 即互斥锁 就叫做 lock上锁！<br>释放一个信号量<br>如果一个进程使用完共享资源就需要释放 ，释放一个信号量时 如果当前有进程因等待信号量而被阻塞 那么<br>其第一个将会恢复执行来访问资源，如果没有进程因等待而阻塞 那么信号量的值将+1<br>这就是信号量中所说的 V操作 即 Verhogen 增加<br>如果是互斥信号量 即互斥锁 就叫做 unlock 解锁</p>
+        <blockquote>
+<p>你就已经初步理解了编译器是什么，你只需要在将来加深这种理解。 –yinwang</p>
+</blockquote>
+<p>小时候去学二胡，从来没有认真练过曲子，也没有感到高兴的时刻，但是花了很多钱，那时候用的是父母的，不怎么心疼。学了5年，应该是初步理解二胡的一些技巧，而在大一的时候我花了很多时间去加深了一些理解。后面真的能全身心的投入去演奏，感受曲子中的各种感情。<br><a id="more"></a><br>自2018-7月到今天，学习c语言3个多月，应该是初步理解了一些c语言的知识，我也希望在工作中能加深对它的理解。</p>
+<p>有段时间练习二胡的感觉很好，练习各种曲子，基本是几遍就可以离谱表演。现在认真想想，应该是练琴的时候刺激到了大脑的某个部位，提升了其能力。现在我分析一下：</p>
+<ul>
+<li>练琴时心无旁骛，沉浸在自己的世界，就是可怜了我那不打游戏的室友；</li>
+<li>练习的都是自己很喜欢的曲子，听过许多遍，旋律已十分熟悉；</li>
+<li>练琴时，先把曲子的整体架构梳理清楚了，难点和需要注意的地方都会多多练习，有段时间很花心，听一首喜欢一首，谱子都没有，或者就随便翻一个谱子，边听边练，练了几下练不好就不练了，这个就是总听它们说的无脑练习吧，不动脑子去练习，如果毅力够，也许能花很多时间完成任务。不过这个毅力不能叫毅力，这是一种精神的沦陷，陷入其中无法自拔。做事得动脑子啊（说到动脑子，我买东西的时候会货比三家，选择适合自己的，价格又不贵的，总会花很多时间在选购上面，买来的东西自然不会太差，但是我也太容易沦陷了）！</li>
+<li><blockquote>
+<p>永远不可能“准备好”，准备得差不多就得上了</p>
+</blockquote>
+</li>
+<li><p>（买东西也是，以后买东西，问问人，多看看，不能超过1个小时，那些细微的差别没必要花上几个小时，不如去看看书，但是不能无脑！）。<br>水平有限，但是不妨碍在有限的能力内做到力所能及的完美，练琴时发现有些地方实在是做不到，我一般会选择放慢节奏，如何死磕，先磕一会儿，实在不行，改改曲子呗。</p>
+</li>
+</ul>
 
       
     </div>
@@ -393,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/typedef/" rel="next" title="typedef">
-                <i class="fa fa-chevron-left"></i> typedef
+              <a href="/2018/10/16/云、网络、安全/" rel="next" title="云、网络、安全">
+                <i class="fa fa-chevron-left"></i> 云、网络、安全
               </a>
             
           </div>
@@ -402,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/13/线程/" rel="prev" title="线程">
-                线程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,17 +455,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,22 +530,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享内存"><span class="nav-number">1.</span> <span class="nav-text">共享内存</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
