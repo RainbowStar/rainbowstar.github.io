@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="代码已写，待归纳">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T03:26:43.304Z">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/975503/201702/975503-20170214211234550-1109833343.png">
+<meta property="og:updated_time" content="2018-10-19T12:57:05.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="代码已写，待归纳">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/975503/201702/975503-20170214211234550-1109833343.png">
 
 
 
@@ -355,7 +357,59 @@
       
 
       
-        <p>代码已写，待归纳<br><a id="more"></a><br>参考：写给大家看的算法、218例<br><a href=""></a><br>冒泡排序：<br>快速排序：<br>递归排序:<br>选择排序：<br>希尔排序：<br>选择排序：</p>
+        <p>代码已写，待归纳<br><a id="more"></a><br>参考：写给大家看的算法、218例<br><img src="https://images2015.cnblogs.com/blog/975503/201702/975503-20170214211234550-1109833343.png" alt=""></p>
+<p>排序算法的判断指标：</p>
+<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>稳  定：冒泡、插入、归并、基<br>不稳定：选择、希尔、快速、堆<br>保存相同的元素，经过排序后，相对位置不变。<br>记忆规律：把原本的数组拆解的排序就不稳定。</p>
+<h3 id="空间复杂度：除了快速排序O-log2n-O-N-都是O-1"><a href="#空间复杂度：除了快速排序O-log2n-O-N-都是O-1" class="headerlink" title="空间复杂度：除了快速排序O(log2n)~O(N)都是O(1)"></a>空间复杂度：除了快速排序O(log2n)~O(N)都是O(1)</h3><h3 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a>时间复杂度：</h3><pre><code>- 平均：shell特别，最快的归并和快速以及堆是O(nlog2n) 其他O(n2)
+- 最好：最快的不变，其他的O(n) 直接排序别管了！
+- 最坏：快速排序变成大部分都是的O(n2) 最快最稳的还是归并啊！
+</code></pre><ul>
+<li>冒泡排序：<ul>
+<li>每次遍历，找到最大的放到后面，如何减小历遍的次数，两个循环。</li>
+<li>缺点：慢，每次只能移动两个相邻的数据；</li>
+</ul>
+</li>
+<li><p>插入排序：</p>
+<ul>
+<li>将后面的数据插入前面已经排列好的有序的数据中</li>
+<li>缺点：比较次数不一定，比较次数越少，插入点后的数据移动越多，特别是数据量庞大的时候</li>
+</ul>
+</li>
+<li><p>归并排序:</p>
+<ul>
+<li>将几个已排序的数据列，合并。</li>
+<li>若n较大，并且要求排序稳定，则可以选择归并排序</li>
+</ul>
+</li>
+<li><p>选择排序：</p>
+<ul>
+<li>多次遍历，一个for循环。区别冒泡</li>
+<li>很垃圾</li>
+</ul>
+</li>
+<li><p>快速排序：</p>
+<ul>
+<li>基准值 对比 根据基准值按照大小 左右分组 重复。</li>
+<li>此排序算法的效率在序列越乱的时候，效率越高。在数据有序时，会退化成冒泡排序；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>希尔排序：<ul>
+<li>拆分 插入排序 合并</li>
+<li>比较在希尔排序中是最主要的操作，而不是交换。用已知最好的步长序列的希尔排序比直接插入排序要快，甚至在小数组中比快速排序和堆排序还快，但在涉及大量数据时希尔排序还是不如快排；</li>
+</ul>
+</li>
+</ul>
+<p>下面截取各个排序法的核心代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">选择排序：比我大就直接换位置</span><br><span class="line"></span><br><span class="line">for() //遍历数组</span><br><span class="line">	for() //遍历比较</span><br><span class="line">		if()//交换位置</span><br><span class="line">		&#123;</span><br><span class="line">			t=</span><br><span class="line">			---</span><br><span class="line">			 =t</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">冒泡排序：</span><br><span class="line">for()//趟数</span><br><span class="line">	for() //比较</span><br><span class="line">		if()//前后交换位置</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">直接插入排序：把后面的未排序的数，插入到前面有序的数据中</span><br><span class="line">void insort(int s[],int a)</span><br><span class="line">&#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	for(i=2;i&lt;=n;i++)//循环完成堆数组的遍历</span><br><span class="line">	&#123;</span><br><span class="line">		s[0]=s[i];//s[0]起temp作用</span><br><span class="line">		j=i-1;//要比较元素的最左边的数据</span><br><span class="line">		while(s[0]&lt;s[j])//从后面开始比较，如果大于比较的数，就将其向后移动</span><br><span class="line">		&#123;</span><br><span class="line">			s[j+1]=s[j];</span><br><span class="line">			j--;//从后向前比较</span><br><span class="line">		&#125;</span><br><span class="line">		s[j+1]=s[0]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">希尔排序:把数据进行分组后再进行插入排序</span><br><span class="line"></span><br><span class="line">代码：在插入排序的基础上，增加一个分组的功能。</span><br><span class="line">插入排序是在一个数据列中移动，每个数据间隔为1</span><br><span class="line">希尔排序是在分组后的数据列中，每个数据间隔为d，将1改成d既可</span><br><span class="line">void insort(int s[],int a)</span><br><span class="line">&#123;</span><br><span class="line">	int i,j,d;</span><br><span class="line">	while(d&gt;=1)</span><br><span class="line">	&#123;</span><br><span class="line">		for(i=d+1;i&lt;=n;i++)//循环完成遍历</span><br><span class="line">		&#123;</span><br><span class="line">			s[0]=s[i];//s[0]起temp作用</span><br><span class="line">			j=i-d;//要比较元素的最左边的数据</span><br><span class="line">			while(s[0]&lt;s[j])//从后面开始比较，如果大于比较的数，就将其向后移动</span><br><span class="line">			&#123;</span><br><span class="line">				s[j+d]=s[j];</span><br><span class="line">				j=j-d;//从后向前比较</span><br><span class="line">			&#125;</span><br><span class="line">			s[j+1]=s[0];</span><br><span class="line">		&#125;</span><br><span class="line">	d=d/2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>`</code><br>快速排序：基准值 根据基准值分成左右分别大于和小于基准值的两组重复操作，使用递归完成。</p>
+<p>代码分析：<br>定义起点和终点，取起点为基准值，从终点开始扫描<br>i&lt;j这个条件贯穿程序，因为只要i&gt;j说明数据被扫描完了。<br>void qusort(int s[],int start,int end)<br>{<br>    int i,j;<br>    i = start;<br>    j = end ;<br>    s[0]=s[start];<br>    while(i&lt;j)<br>    {<br>        while(i&lt;j&amp;&amp;s[0]&lt;s[j])//从后面开始找到比基准小的值<br>            j–；<br>        if(i&lt;j)<br>        {<br>            s[i]=s[j];//将小于基准值的数放到基准值的位置<br>            i++;//+1开始<br>        }<br>        while(i&lt;j&amp;&amp;s[i]&lt;=s[0])<br>            i++;//从前面开始找到大于基准的数<br>        if(i&lt;j)<br>        {<br>            s[j]=s[i];//将大于基准值的数放到之前找到的小于基准值的数的地方<br>            j–;-1结束 节省时间！<br>        }<br>        s[i]=s[0];//将基准值填入空出的s[i]<br>        if(start&lt;i)<br>            qusort(s,start,j-1);<br>        if(i&lt;end)<br>            qusort(s,j+1,end);</p>
+<pre><code>}
+</code></pre><p>}</p>
 
       
     </div>
@@ -444,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -464,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -519,6 +582,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性"><span class="nav-number">1.</span> <span class="nav-text">稳定性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：除了快速排序O-log2n-O-N-都是O-1"><span class="nav-number">2.</span> <span class="nav-text">空间复杂度：除了快速排序O(log2n)~O(N)都是O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度："><span class="nav-number">3.</span> <span class="nav-text">时间复杂度：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

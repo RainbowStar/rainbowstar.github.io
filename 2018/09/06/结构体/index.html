@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="其中: struct 结构体名   就是新的数据类型例如:12345678struct student&amp;#123;	int id;	char name[50];	char sex[10];	int age;	float score;				&amp;#125;;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-11T12:53:30.123Z">
+<meta property="og:updated_time" content="2018-10-20T07:24:35.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="结构体">
 <meta name="twitter:description" content="其中: struct 结构体名   就是新的数据类型例如:12345678struct student&amp;#123;	int id;	char name[50];	char sex[10];	int age;	float score;				&amp;#125;;">
@@ -360,7 +360,8 @@
 <p>struct student stu;<br>stu就是结构体变量名</p>
 <p>结构体成员在内存中的分布<br>以定义结构体时,成员定义的先后顺序依次分配空间<br>定义的时候直接对变量赋值<br>1) 按定义结构体的成员顺序,依次全初始化赋值,用’,’分开每一个变量的值<br>    struct test t = {10086,’c’};</p>
 <p>2) 不按顺序赋值,需要指定赋值哪一个成员变量<br>    struct test t = {<br>                        .b = ‘c’,<br>                        .a = 10010<br>                    };</p>
-<p>3) 结构体数组初始化<br>    a.按数组元素依次初始化<br>        struct test t[3] = {<br>                            {1,’a’},<br>                            {2,’b’},<br>                            {3,’c’}<br>                           };<br>共用体与结构体的区别<br>a)结构体的大小 与 各成员变量的类型有关,是所有成员类型所占空间大小的和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">比如  </span><br><span class="line">	struct test</span><br><span class="line">	&#123;</span><br><span class="line">		int a;</span><br><span class="line">		int b;</span><br><span class="line">	&#125;; ===&gt; 8个字节</span><br></pre></td></tr></table></figure></p>
+<p>3) 结构体数组初始化<br>    a.按数组元素依次初始化<br>        struct test t[3] = {<br>                            {1,’a’},<br>                            {2,’b’},<br>                            {3,’c’}<br>                           };<br>共用体与结构体的区别</p>
+<h3 id="结构体的大小-与-各成员变量的类型有关-是所有成员类型所占空间大小的和-还有字节对齐"><a href="#结构体的大小-与-各成员变量的类型有关-是所有成员类型所占空间大小的和-还有字节对齐" class="headerlink" title="结构体的大小 与 各成员变量的类型有关,是所有成员类型所占空间大小的和 还有字节对齐"></a>结构体的大小 与 各成员变量的类型有关,是所有成员类型所占空间大小的和 还有字节对齐</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">比如  </span><br><span class="line">	struct test</span><br><span class="line">	&#123;</span><br><span class="line">		int a;</span><br><span class="line">		int b;</span><br><span class="line">	&#125;; ===&gt; 8个字节</span><br></pre></td></tr></table></figure>
 <p>共用体的所有成员共用一块内存空间,共用体的大小 就是成员中 内存空间最大的那个变量的空间大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">比如:</span><br><span class="line">	union test</span><br><span class="line">	&#123;</span><br><span class="line">		int a;</span><br><span class="line">		char c;</span><br><span class="line">		short d;</span><br><span class="line">	&#125;; ===&gt; 4字节</span><br><span class="line">======&gt; 共用体最大的特色   节约空间</span><br></pre></td></tr></table></figure></p>
 <p>b) 共用体中所有成员的地址 都是该成员中所占空间最大的那个变量的 首地址<br>    共用体适用与 成员变量 不同时使用的情况</p>
 <p>===================================内存的存储模式=================================================<br>在现代操作系统中,内存的存储分为 大端模式  和 小端模式</p>
@@ -370,6 +371,19 @@
 <p>t.a = 0x11223344;<br>printf(“%x\n”,t.c) //  44 小端    11 大端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">union test</span><br><span class="line">	&#123;</span><br><span class="line">		int a;</span><br><span class="line">		char c[4];</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	union test t;</span><br><span class="line">	t.c[0] = 0x12;</span><br><span class="line">	t.c[1] = 0x34;</span><br><span class="line">	t.c[2] = 0x56;</span><br><span class="line">	t.c[3] = 0x78;</span><br><span class="line">	t.a == ? 0x12345678 //F</span><br><span class="line">			 0x87654321 //F</span><br><span class="line">			 0x78563412 //T</span><br></pre></td></tr></table></figure></p>
 <p>将枚举类型中的成员变量一一列举出<br>在某些情况下,一个变量的值是在一定范围内变化的,那么我们就可以利用枚举,把该变量的值都列举出来<br>比如:一个星期的变化是在  1 ~ 7之间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">enum weekday</span><br><span class="line">&#123;</span><br><span class="line">	MON = 1,</span><br><span class="line">	TUE,  //2</span><br><span class="line">	WEN,  //3</span><br><span class="line">	THU,  //4</span><br><span class="line">	FRI,  //5</span><br><span class="line">	SAT,  //6</span><br><span class="line">	SUN   //7</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>★★★★★枚举可以在定义时给成员变量赋值,未赋值的成员变量由上一个变量的值 +1<br>如果都未赋值,则第一个成员变量的值为 0, 后续变量依次+1</p>
+<p>使用共同点和却别：<br>struct test<br>union test<br>enum test</p>
+<ul>
+<li>模糊点：定义与声明 三者类似！<br><code>定义：
+  struct test{}
+  union test{}
+  enum test{}</code><br>声明：许多方法</li>
+</ul>
+<ol>
+<li>定义后声明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct test name</span><br><span class="line"> union test name</span><br><span class="line">  enmu test name</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.定义时声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum week </span><br><span class="line">&#123; Mon=1, Tue, Wed, Thu, Fri Sat, Sun&#125; days; //变量days的类型为枚举型enum week</span><br></pre></td></tr></table></figure></p>
+<p>3.typedef设置别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef enum workday</span><br><span class="line">&#123;</span><br><span class="line">    saturday,</span><br><span class="line">    sunday = 0,</span><br><span class="line">    monday,</span><br><span class="line">    tuesday,</span><br><span class="line">    wednesday,</span><br><span class="line">    thursday,</span><br><span class="line">    friday</span><br><span class="line">&#125; workday; //此处的workday为枚举型enum workday的别名</span><br><span class="line"></span><br><span class="line">workday today, tomorrow; //变量today和tomorrow的类型为枚举型workday，也即enum workday</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -458,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -478,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,6 +556,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体的大小-与-各成员变量的类型有关-是所有成员类型所占空间大小的和-还有字节对齐"><span class="nav-number">1.</span> <span class="nav-text">结构体的大小 与 各成员变量的类型有关,是所有成员类型所占空间大小的和 还有字节对齐</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

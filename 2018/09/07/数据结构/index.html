@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表 使用最多：双向循环链表">
+<meta name="description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表  是什么？不是什么？和其他有什么异同？  使用最多：双向循环链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构">
 <meta property="og:url" content="http://yoursite.com/2018/09/07/数据结构/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表 使用最多：双向循环链表">
+<meta property="og:description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表  是什么？不是什么？和其他有什么异同？  使用最多：双向循环链表">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-11T12:54:53.312Z">
+<meta property="og:updated_time" content="2018-10-20T07:50:43.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构">
-<meta name="twitter:description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表 使用最多：双向循环链表">
+<meta name="twitter:description" content="常用链表模板栈与队列：熟悉树：熟悉遍历方法 链表单向链表双向链表循环链表  是什么？不是什么？和其他有什么异同？  使用最多：双向循环链表">
 
 
 
@@ -357,20 +357,23 @@
       
         <p>常用链表模板<br>栈与队列：熟悉<br>树：熟悉遍历方法</p>
 <p>链表<br>单向链表<br>双向链表<br>循环链表</p>
+<blockquote>
+<p>是什么？不是什么？和其他有什么异同？</p>
+</blockquote>
 <p>使用最多：双向循环链表<br><a id="more"></a><br>创建链表：</p>
 <ol>
-<li>结构体：存放数据的下一个指向</li>
+<li>结构体：存放数据和下一个指向</li>
 <li>初始化链表</li>
 <li>添加链表结点</li>
 <li>附加<ul>
 <li>查、删、改结点</li>
-<li>顺序排序<br>typedef struct node{<br>char path[128];<br>int mode;<br>struct node<em> next;<br>struct node</em> prev;<br>}Node;</li>
+<li>顺序排序<br>typedef struct node{<br>char path[128];//保存数据<br>struct node<em> next;//指向下一个<br>struct node</em> prev;//指向上一个<br>}Node;</li>
 </ul>
 </li>
 </ol>
-<p>typedef struct list{<br>    Node <em>first;<br>    Node </em>last;<br>}List;</p>
+<p>typedef struct list{<br>    Node <em>first;//头节点<br>    Node </em>last;//尾节点<br>}List;</p>
 <p>List <em>init_link()//创建初始化链表<br>{<br>    List </em>list = (List*) malloc(sizeof(List));<br>    if(list == NULL)<br>    {<br>        perror(“List malloc error”);<br>        return NULL;<br>    }<br>    list-&gt;first = list-&gt;last = NULL;<br>    return list;<br>}</p>
-<p>List <em>add_link(List </em>list,char <em>filename,int mode)<br>{<br>    Node </em>p = (Node *)malloc(sizeof(Node));<br>    if(p==NULL)<br>    {<br>        perror(“node malloc error”);<br>        return NULL;<br>    }<br>    p-&gt;mode=mode;<br>    strcpy(p-&gt;path,filename);<br>    p-&gt;next = p-&gt;prev = NULL;<br>    if(list-&gt;first == NULL)<br>    {<br>        list-&gt;first = list-&gt;last = p; //头尾都是他<br>        list-&gt;last-&gt;next = list-&gt;first; // 尾巴的下一个是 第一个<br>        list-&gt;first-&gt;prev = list-&gt;last;<br>    }<br>    else<br>    {<br>        //尾插<br>        list-&gt;last-&gt;next = p; // 原最后一个的下一个是新节点<br>        p-&gt;prev = list-&gt;last;//<br>        list-&gt;last = p; //新节点成为新尾巴<br>        list-&gt;last-&gt;next = list-&gt;first; //尾巴 的下一个是 第一个<br>        list-&gt;first-&gt;prev = list-&gt;last;<br>    }</p>
+<p>List <em>add_link(List </em>list,char <em>filename,int mode)<br>{<br>    传进来了一个结点 将指向新创建的结点<br>    Node </em>p = (Node *)malloc(sizeof(Node));//新结点<br>    if(p==NULL)<br>    {<br>        perror(“node malloc error”);<br>        return NULL;<br>    }<br>    p-&gt;mode=mode;//赋值给新结点<br>    strcpy(p-&gt;path,filename);//字符串赋值<br>    p-&gt;next = p-&gt;prev = NULL;<br>    if(list-&gt;first == NULL)<br>    {<br>        list-&gt;first = list-&gt;last = p; //头尾都是他<br>        list-&gt;last-&gt;next = list-&gt;first; // 尾巴的下一个是 第一个<br>        list-&gt;first-&gt;prev = list-&gt;last;<br>    }<br>    else<br>    {<br>        //尾插<br>        list-&gt;last-&gt;next = p; // 原最后一个的下一个是新节点<br>        p-&gt;prev = list-&gt;last;//<br>        list-&gt;last = p; //新节点成为新尾巴<br>        list-&gt;last-&gt;next = list-&gt;first; //尾巴 的下一个是 第一个<br>        list-&gt;first-&gt;prev = list-&gt;last;<br>    }</p>
 <pre><code>return list;
 </code></pre><p>}</p>
 <p>队列：<br>限定在表头删除 表尾插入的线性表 称之为 队列！<br>队头：指的是删除的那一端！<br>队尾：插入的一端<br>原则：先进先出 first in first out</p>
@@ -381,7 +384,7 @@
 <p>（2）访问根节点</p>
 <p>（3）中序遍历右子树<br>后序遍历：左右根<br>1）后序遍历左子树</p>
 <p>（2）后序遍历右子树</p>
-<p>（3）访问根节点<br>核心理解：在子节点时也是按照规律输出，套用嵌套的概念。</p>
+<p>（3）访问根节点<br>核心理解：在子节点时也是按照规律输出，死守这个概念。</p>
 
       
     </div>
@@ -490,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
