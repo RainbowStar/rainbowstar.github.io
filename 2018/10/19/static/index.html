@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，其值不变。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  不是什么：不是普通函数 和全局变量有区别全局变量还可以在定义的函数体外">
+<meta name="description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，调用时其值不变，在主或子函数中赋值有效。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  另外一种说法：  设置变量的存储域，函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="static">
 <meta property="og:url" content="http://yoursite.com/2018/10/19/static/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，其值不变。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  不是什么：不是普通函数 和全局变量有区别全局变量还可以在定义的函数体外">
+<meta property="og:description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，调用时其值不变，在主或子函数中赋值有效。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  另外一种说法：  设置变量的存储域，函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T02:30:49.319Z">
+<meta property="og:updated_time" content="2018-10-23T16:01:04.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="static">
-<meta name="twitter:description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，其值不变。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  不是什么：不是普通函数 和全局变量有区别全局变量还可以在定义的函数体外">
+<meta name="twitter:description" content="学习概念 是什么？不是什么？和其他有什么异同？    好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，调用时其值不变，在主或子函数中赋值有效。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。  另外一种说法：  设置变量的存储域，函数">
 
 
 
@@ -363,9 +363,15 @@
 </ul>
 <p>好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。</p>
 <h3 id="是什么："><a href="#是什么：" class="headerlink" title="是什么："></a>是什么：</h3><ol>
-<li>在一函数体内，其值不变。</li>
+<li>在一函数体内，调用时其值不变，在主或子函数中赋值有效。</li>
 <li>在一函数体内，它是一个本地的全局变量。</li>
 <li>一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。</li>
+</ol>
+<p>另外一种说法：</p>
+<ol>
+<li>设置变量的存储域，函数体内static变量的作用范围为该函数体，不同于auto变量，该变量的内存只被分配一次，因此其值在下次调用时仍维持上次的值；</li>
+<li>限制变量的作用域，在模块内的static全局变量可以被模块内所用函数访问，但不能被模块外其它函数访问；</li>
+<li>限制函数的作用域，在模块内的static函数只可被这一模块内的其它函数调用，这个函数的使用范围被限制在声明它的模块内；</li>
 </ol>
 <h3 id="不是什么："><a href="#不是什么：" class="headerlink" title="不是什么："></a>不是什么：</h3><p>不是普通函数</p>
 <h3 id="和全局变量有区别"><a href="#和全局变量有区别" class="headerlink" title="和全局变量有区别"></a>和全局变量有区别</h3><p>全局变量还可以在定义的函数体外访问<br>注意一个知识点：定义变量和声明变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">（1）main.c文件</span><br><span class="line"></span><br><span class="line"> 　#include &quot;common.h&quot;</span><br><span class="line">　 unsigned char key; 定义全局变量</span><br><span class="line"></span><br><span class="line">　　（2）common.c文件：</span><br><span class="line"></span><br><span class="line"> 　#include &quot;common.h&quot;</span><br><span class="line">　 extern unsigned char key; //声明</span><br></pre></td></tr></table></figure></p>
@@ -486,7 +492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

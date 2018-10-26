@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[协议]]></title>
+    <url>%2F2018%2F10%2F26%2F%E5%8D%8F%E8%AE%AE%2F</url>
+    <content type="text"><![CDATA[串口协议 波特率 数据位 停止位 奇偶校验RXD TXD GND SPI四线协议:时钟、从机选择使能、 有多个从机，但只能存在一个主机，通过使能线选择 i2c两线：数据线、时钟线 区别:SPI通过片选信号线SS来决定要通讯的从机，I2C通过给每个I2C器件分配唯一的地址 esp8266 TCP通讯https://blog.csdn.net/qq_28877125/article/details/62898895]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[线程与进程]]></title>
+    <url>%2F2018%2F10%2F24%2F%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[进程与线程的区别（并行与并发） 进程间的通信、流程图 线程的同步 线程池 进程与线程的区别根本区别：进程是系统资源分配的基本单位，线程是任务调度和执行的基本单位 开销区别：进程有自己的独立地址空间，开销较大。而线程是共享进程中的数据的，开销较小 通信方式：进程通信方式：管道、FIFO(又名管道)、消息队列、信号、信号量、共享内存区 线程通信方式：互斥、信号、 稳定性：一个进程出错不会影响其他进程。多线程程序只要一个线程出错，整个进程就会出错 进程间的通讯SYSTEM V和POXISPOXIS:每个IPC对象是有名称的system v :key_t 生成钥匙 看到通讯的本质PIPE和FIFO：随进程持续建立、打开、删除的方式不同外，通过内核缓冲区实现数据传输。通过文件描述符读写 消息队列：随内核持续提供字节流，优先级机制 共享内存：速度最快 内存映射：mmap映射普通文件，建立共享内存。最后完成操作后才将文件回写 system v：通过映射特殊文件系统shm中的文件实现进程间的共享内存通信。 信号量：只能用来同步 线程间的通信(或者叫同步)锁机制：互斥锁、读写锁、条件变量 互斥锁：排他防止数据被更改 读写锁：允许同时读，对写是互斥的 条件变量：配合互斥锁使用信号量机制：包括无名线程信号量和命名线程信号量信号机制：类似进程间的信号处理 信号和信号量信号：控制一系列信号。信号量：我先关注线程的同步 PV操作：是不可中断的过程，信号量的值只能由其改变 临界区：一次仅允许一个进程使用的共享资源使用临界资源之前执行P操作，用完执行V操作P：取出 V：送货 进程间通信参考 线程池：结构： 工作线程 任务队列 线程管理 任务接口 1、预先启动一些线程，线程负责执行任务队列中的任务，当队列空时，线程挂起。 2、调用的时候，直接往任务队列添加任务，并发信号通知线程队列非空。 3、管理线程负责监控任务队列和系统中的线程状态，当任务队列为空，线程数目多且很多处于空闲的时候，便通知一些线程退出以节约系统资源；当任务队列排队任务多且线程都在忙，便负责再多启动一些线程来执行任务，以确保任务执行效率。]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[TCP与UDP]]></title>
+    <url>%2F2018%2F10%2F24%2FTCP%E4%B8%8EUDP%2F</url>
+    <content type="text"><![CDATA[发现用历史推演的角度去看问题会更有逻辑 TCP与UDP的区别 TCP的握手和挥手 UDP的建立连接 sock的bind使用 7层协议和四层协议 7层协议和四层协议OSI模型应用层 应用表示层 解决不同系统间的通讯语法问题会话层 管理程序间的通信传输层 TCP/UDP网络层 路由器数据链路 交换机(mac)物理层 网线 TCP/IP四层协议应用层传输层网络层数据层 TCP与UDP区别 TCP面向连接，因此传输较慢、占用系统资源多。UDP无连接，TCP的大部分缺点转换成了其优点 TCP提供可靠的服务，传输可靠的数据。UDP尽力交付，传输大量的数据 TCP面向字节流，UDP面向报文 TCP只能一对一，UDP可以多种形式TCP常见服务：邮件、POP、HTTP、FTP、SSH TCP的握手和挥手为什么是3次握手 四次挥手：结束的时候不会一下就断开，要给他完成任务的时间三次握手CLIENT SERVER SYN=1,seq(随机产生的)=x—–&gt; &lt;—- SYN=1,ACK=1,ack=x+1,seq=y ACK=1,ack=y+1,seq=x+1 这里client检测传来的ack ACK后发送数据 传过去后server也会检测。SEQ的作用：序列号 防止传错，便于接收方能按顺序接受数据 四次挥手 FIN=1 seq=u ACK=1,ack=u+1 seq=v FIN=1,ACK=1,ack=u+1,seq=w ACK=1,seq=u+1,ack=w+1 sock完成TCP/UDPTCP 创建套接字 字节流 绑定IP和端口 bind() 监听 listen 接收accept 发送send UDP 创建套接字 数据报 绑定IP和端口 bind() 接收recvfrom 发送sendto 面向数据报：发送端调用一次sendto, 发送100个字节, 那么接收端也必须调用对应的一次recvfrom, 接收100个字节，而不能循环调用10次recvfrom, 每次接收10个字节; 面向字节流：上述两种都可以 十八、请简述设计一个tcp并发服务器的基本流程，并且将关键函数写出 ）（5分）socket()：创建一个socket文件描述符bind(): 绑定服务器的ip地址和端口号(以太网地址结构)Listen(): 监听客户端select(): 轮训所有监听的文件描述符acept(): 等待客户端的连接]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[面试题]]></title>
+    <url>%2F2018%2F10%2F23%2F%E9%9D%A2%E8%AF%95%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[112printf(&quot;%f&quot;,5);printf(&quot;%d&quot;,5.01);//输出的是.01的二进制 printf(“%f”,5) 首先5是int型的，在内存中占有4B，而输出确要是8B个字节，5在内存中为0000 0000 0000 0000 0000 0000 0000 0101 按%f输出还必须加入0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0101 才行，由于double类小数点后面只保留6位，所以不可能取到有非0的101处，所以答案为0.000000。 printf(“%d”,5.01); 2123456781 void main()2 &#123;3 unsigned int a = 0xFFFFFFF7;4 unsigned char i = (unsigned char)a;5 char* b = (char*)&amp;a;//强转是为了完成赋值6 *b只能保存一个字节的数据7 printf(&quot;%08x, %08x\n&quot;, i, *b);8 &#125; 要点：%08x 输出十六进制 不够8位补零 0x会输出。i被赋值为f7，按照格式输出 0x00 00 00 f7b指向a的低字节内存。也就是0xA7 b有符号。(char b = (char*)&amp;a大坑)[https://blog.csdn.net/race604/article/details/6725475] 3一个栈的入栈序列为ABCDEF，则不可能的出栈序列是一个个分析是不可能的，找到规律！ 1、在原序列中相对位置比它小的，必须是逆序；2、在原序列中相对位置比它大的，顺序没有要求；3、以上两点可以间插进行。 看第一个是什么：如果是F 那么 只能是EDCBA 如果是D 那么 D前面的只能是CBA EF随意(例子)[https://www.jianshu.com/p/e91cdf745048] 4过桥问题：一个手电筒，每次两个人 A B C D过桥时间1 3 5 6 最短：AB 3 A 1 送手电 CD 6 B 3 送手电 AB 3 5123456(考虑内存重叠的mystrcpy)[https://blog.csdn.net/nyist327/article/details/46533829]char *strcpy(char *dst, const char *src);实现strcpy函数解释为什么要返回char *假如考虑dst和src内存重叠的情况，strcpy该怎么实现 123456789101112131415161718192021222324252627282930//实现1char * strcpy(char* _Dest, const char* _Source)&#123; //检查传入参数的有效性 assert(NULL != _Dest); assert(NULL != _Source); if (NULL ==_Dest || NULL == _Source) return NULL; char* ret = _Dest; while((*_Dest++ = *_Source++) != &apos;\0&apos;) ;\\结尾的时候会赋值&apos;\0&apos; return ret;&#125;//实现2char * strcpy(char* _Dest, const char* _Source)&#123; //检查传入参数的有效性 assert(NULL != _Dest); assert(NULL != _Source); if (NULL ==_Dest || NULL == _Source) return NULL; char* ret = _Dest; int i = 0; for (i = 0; _Source[i] != &apos;\0&apos;; i++) &#123; _Dest[i] = _Source[i]; &#125; _Dest[i] = &apos;\0&apos;;//结尾赋值&apos;\0&apos; return ret;&#125; 源字符串参数用const修饰，防止修改源字符串。 (A)不检查指针的有效性，说明答题者不注重代码的健壮性。 考虑内存覆盖的字符拷贝：内存覆盖：src和dest的地址靠得很近，在给dest赋值的过程中会改变还未赋值给dest的src中的内容 递归实现数字逆序后存入数组123456789101112131415161718192021222324252627282930#include&lt;stdio.h&gt;#include&lt;string.h&gt; /* /////////////////////////////////////////*//*将一整数逆序后放入一数组中（要求递归实现）*//*//////////////////////////////////////////*/ void convert(int *result, int n); void main()&#123; int num,result[20],i,n; printf(&quot;输入整数的位数\n&quot;); scanf(&quot;%d&quot;,&amp;n); printf(&quot;请输入整数\n&quot;); scanf(&quot;%d&quot;,&amp;num); convert(result,num); for(i = 0;i &lt; n;i++) printf(&quot;%d &quot;,result[i]); printf(&quot;\n&quot;);&#125; void convert(int *result, int n)&#123; if(n &gt;= 10) &#123; convert(result+1,n/10); &#125; *result = n%10;&#125;]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[指针的骚操作]]></title>
     <url>%2F2018%2F10%2F22%2F%E6%8C%87%E9%92%88%E7%9A%84%E9%AA%9A%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[指针确定循环条件：inverte(int x,int n){ int p,temp,i,j,m=(n-1)/2; i = x;//起始的元素 j = x + n -1;//最后的元素 p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。 for(;i&lt;=p;i++,j–) { temp = i; i = j; j = temp; } return 0;}]]></content>
@@ -51,7 +83,7 @@
   <entry>
     <title><![CDATA[static]]></title>
     <url>%2F2018%2F10%2F19%2Fstatic%2F</url>
-    <content type="text"><![CDATA[学习概念 是什么？不是什么？和其他有什么异同？ 好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，其值不变。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。 不是什么：不是普通函数 和全局变量有区别全局变量还可以在定义的函数体外访问注意一个知识点：定义变量和声明变量123456789（1）main.c文件 #include &quot;common.h&quot; unsigned char key; 定义全局变量 （2）common.c文件： #include &quot;common.h&quot; extern unsigned char key; //声明]]></content>
+    <content type="text"><![CDATA[学习概念 是什么？不是什么？和其他有什么异同？ 好习惯：只用于本文件的函数要全部使用static关键字声明，这是一个良好的编码风格。 是什么： 在一函数体内，调用时其值不变，在主或子函数中赋值有效。 在一函数体内，它是一个本地的全局变量。 一个被声明为静态的函数只可被这一函数内的其它函数调用。那就是，这个函数被限制在声明它的模块的本地范围内使用。 另外一种说法： 设置变量的存储域，函数体内static变量的作用范围为该函数体，不同于auto变量，该变量的内存只被分配一次，因此其值在下次调用时仍维持上次的值； 限制变量的作用域，在模块内的static全局变量可以被模块内所用函数访问，但不能被模块外其它函数访问； 限制函数的作用域，在模块内的static函数只可被这一模块内的其它函数调用，这个函数的使用范围被限制在声明它的模块内； 不是什么：不是普通函数 和全局变量有区别全局变量还可以在定义的函数体外访问注意一个知识点：定义变量和声明变量123456789（1）main.c文件 #include &quot;common.h&quot; unsigned char key; 定义全局变量 （2）common.c文件： #include &quot;common.h&quot; extern unsigned char key; //声明]]></content>
       <categories>
         <category>C语言</category>
       </categories>
