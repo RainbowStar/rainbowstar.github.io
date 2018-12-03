@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="程序在运行过程中,数据的存储问题Linux将程序运行时,地址空间分为了6个部分  栈: 用来存放局部变量  生成周期 随函数(代码块)持续性 除此以外，在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也会被存放回栈中。由于栈的先进先出特点，所以栈特别方便用来保存/恢复调用现场。从这个意义上讲，我们可以把堆栈看成一个寄存、交换临时数据的内存区。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T02:34:33.468Z">
+<meta property="og:updated_time" content="2018-12-03T17:00:52.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据存储空间">
 <meta name="twitter:description" content="程序在运行过程中,数据的存储问题Linux将程序运行时,地址空间分为了6个部分  栈: 用来存放局部变量  生成周期 随函数(代码块)持续性 除此以外，在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也会被存放回栈中。由于栈的先进先出特点，所以栈特别方便用来保存/恢复调用现场。从这个意义上讲，我们可以把堆栈看成一个寄存、交换临时数据的内存区。">
@@ -373,9 +373,8 @@
 </li>
 <li><p>.rodata  read ONLY data 用来存放只读数据 字符串常量 全局const变量 和 #define定义的常量<br>  随进程持续性</p>
 </li>
-<li><p>.data 数据段 存放已初始化的全局变量和初始化的static修饰的变量</p>
-<pre><code>随进程持续性
-</code></pre></li>
+<li><p>.data 数据段 存放已初始化的全局变量和初始化的static修饰的变量<br>  随进程持续性</p>
+</li>
 <li><p>.text 文本  文本段,用来存放代码/指令 也被称为 代码段<br>  随进程持续性</p>
 </li>
 </ul>
@@ -487,7 +486,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -498,7 +497,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

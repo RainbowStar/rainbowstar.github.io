@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="需要熟悉ascii：‘0’ 48 0x30‘a’ 97‘A’ 65">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T03:53:47.220Z">
+<meta property="og:updated_time" content="2018-12-03T15:10:52.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据间的运算规则">
 <meta name="twitter:description" content="需要熟悉ascii：‘0’ 48 0x30‘a’ 97‘A’ 65">
@@ -356,8 +356,9 @@
 
       
         <p>需要熟悉ascii：<br>‘0’ 48 0x30<br>‘a’ 97<br>‘A’ 65<br><a id="more"></a><br>比如:<br>0x123456存储是:<br>0000 0000 0001 0010 0011 0100 0101 0110</p>
-<p>-1 存储在内存中是:<br>0000 0000 0000 0000 0000 0000 0000 0001 (1)<br>1111 1111 1111 1111 1111 1111 1111 1110 (~1)<br>1111 1111 1111 1111 1111 1111 1111 1111 (~1 + 1 == -1)</p>
-<p>1000 0000 0000 0000 0000 0000 0000 0000 这个就是最大的负数<br>注意:内存中的数据是不存在符号位的,全都是数据位<br>符号位只存在与编译器中</p>
+<p>-1 存储在内存中是:绝对值，取反，加1<br>0000 0000 0000 0000 0000 0000 0000 0001 (1)<br>1111 1111 1111 1111 1111 1111 1111 1110 (~1)<br>1111 1111 1111 1111 1111 1111 1111 1111 (~1 + 1 == -1)</p>
+<p>1000 0000 0000 0000 0000 0000 0000 0000 这个就是最大的负数</p>
+<p>注意:内存中的数据是不存在符号位的,全都是数据位<br>符号位只存在与编译器中</p>
 <p>短型 —&gt; 长型  高字节补位<br>短型有符号: 高字节补符号位<br>短型无符号: 高字节补 0</p>
 <p>有符号赋值给无符号数据<br>遵守无符号数据默认比有符号数据范围大！<br>char -128 - 127<br>unsigned char 0-255<br>最大数明显255 &gt; 127 所以认为无符号数据的表示范围大于 有符号数<br>unsigned int a ;<br>int b = -1;<br>a = b;<br>printf(“%d”,a); ＝&gt; -1 原因是 %d 打印有符号整型<br>printf(“%u”,a); =&gt;0xFFFFFFFF;<br>说明输出由编译器决定。</p>
 <p>浮点常量并不是float 而是double<br><a href="https://blog.csdn.net/White_Idiot/article/details/52503439" target="_blank" rel="noopener">输出格式</a>： %[flags][width][.prec][F|N|h|l]type(最后才是类型）</p>
@@ -471,7 +472,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -482,7 +483,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

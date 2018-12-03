@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="难得入迷">
 <meta property="og:description" content="scanf,gets,getchar的区别从标准输入流中读取内容。  scanf不会接收Space空格，回车符或空格或Tab还在缓冲区结束：回车Enter，Tab键 gets能接收空格键，缓冲区无残留结束：回车键，Tab键，回车则认为输入结束 getchar只能接受一个字符，可接受回车键。回车符或空格或Tab还在缓冲区结束：遇到回车结束输入 数据不是直接从外设得到，是先存入缓存区，遇到回车(\n)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T06:42:31.498Z">
+<meta property="og:updated_time" content="2018-12-03T17:15:21.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="输入输出函数">
 <meta name="twitter:description" content="scanf,gets,getchar的区别从标准输入流中读取内容。  scanf不会接收Space空格，回车符或空格或Tab还在缓冲区结束：回车Enter，Tab键 gets能接收空格键，缓冲区无残留结束：回车键，Tab键，回车则认为输入结束 getchar只能接受一个字符，可接受回车键。回车符或空格或Tab还在缓冲区结束：遇到回车结束输入 数据不是直接从外设得到，是先存入缓存区，遇到回车(\n)">
@@ -362,11 +362,12 @@
 <li>gets能接收空格键，缓冲区无残留<br>结束：回车键，Tab键，回车则认为输入结束</li>
 <li>getchar只能接受一个字符，可接受回车键。回车符或空格或Tab还在缓冲区<br>结束：遇到回车结束输入<blockquote>
 <p>数据不是直接从外设得到，是先存入缓存区，遇到回车(\n)结束。<br><em>注意</em>：这个回车(\n)，也会存入缓存区，一般情况需要吸收！。</p>
+<a id="more"></a>
+<p>1），前面有scanf，后面要用ch=getchar()接收字符时，中间要用一个空的getchar（）吃回车；</p>
 </blockquote>
 </li>
 </ol>
-<p>1），前面有scanf，后面要用ch=getchar()接收字符时，中间要用一个空的getchar（）吃回车；</p>
-<p>2），2个接收字符的ch=getchar()中间需要一个空的getchar（）吃回车。<br><a id="more"></a><br>include &lt;stdio.h&gt;<br>printf/scanf<br>printf():<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%d 打印10进制整型的 有符号</span><br><span class="line">%u 打印10进制整型的 无符号</span><br><span class="line">%c 打印一个字符</span><br><span class="line">%x 打印16进制数据</span><br><span class="line">%o 打印八进制数据</span><br><span class="line">%f 打印浮点数据</span><br><span class="line">%s 打印字符串的</span><br><span class="line">%p 打印地址的</span><br><span class="line">%g 打印时不输出无意义的0</span><br></pre></td></tr></table></figure></p>
+<p>2），2个接收字符的ch=getchar()中间需要一个空的getchar（）吃回车。<br><!-- more --><br>include &lt;stdio.h&gt;<br>printf/scanf<br>printf():<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%d 打印10进制整型的 有符号</span><br><span class="line">%u 打印10进制整型的 无符号</span><br><span class="line">%c 打印一个字符</span><br><span class="line">%x 打印16进制数据</span><br><span class="line">%o 打印八进制数据</span><br><span class="line">%f 打印浮点数据</span><br><span class="line">%s 打印字符串的</span><br><span class="line">%p 打印地址的</span><br><span class="line">%g 打印时不输出无意义的0</span><br></pre></td></tr></table></figure></p>
 <p>scanf()</p>
 <p>注意： scanf 的结束标志<br>1、遇到非法字符 输入结束 比如 你要输入的是%d 一个整型而你输入了’n’ 就结束<br>2、遇到空白符 比如 空格 回车 tab …..<br>3、输入的宽度到了 就结束 比如 %3d 只能输入一个三位数 如果输入21345就结束了。<br>强调： 在scanf输入中 格式化    怎么写就必须怎么输入 不能有任何不一致否则会出错<br>对于初学者只建议使用占位符不要使用 其他符号。<br>ex:<br>int a,b,c,d;<br>scanf(“%d %d %d %d\n”,&amp;a,&amp;b,&amp;c,&amp;d);<br>输入时必须输入：<br>    ex： 1 2 3 4(回车)<br>scanf(“%d%d%d%d”,&amp;a,&amp;b,&amp;c,&amp;d);<br>输入只要以空白符作为间隔即可。<br>    ex:1 2 3 4 (回车)<br>    ex:1 (回车)2 (回车)3 (回车)4 (回车)</p>
 
@@ -483,7 +484,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -494,7 +495,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。   腾达面试题目123456789101112int m(char * p)&amp;#123; p=malloc(10); return 1;&amp;#125;int main">
+<meta name="description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="malloc">
 <meta property="og:url" content="http://yoursite.com/2018/10/19/malloc/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。   腾达面试题目123456789101112int m(char * p)&amp;#123; p=malloc(10); return 1;&amp;#125;int main">
+<meta property="og:description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-21T09:25:30.941Z">
+<meta property="og:updated_time" content="2018-12-03T17:10:46.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="malloc">
-<meta name="twitter:description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。   腾达面试题目123456789101112int m(char * p)&amp;#123; p=malloc(10); return 1;&amp;#125;int main">
+<meta name="twitter:description" content="学习概念  是什么？不是什么？和其他有什么异同？   是什么在头文件&amp;lt;stdlib.h&amp;gt;下(这么知道的？man malloc)void *malloc(size_t size);用来分配空间，返回指向被分配的空间的指针。">
 
 
 
@@ -362,9 +362,11 @@
 </blockquote>
 </li>
 <li><p>是什么<br>在头文件&lt;stdlib.h&gt;下(这么知道的？man malloc)<br>void *malloc(size_t size);<br>用来分配空间，返回指向被分配的空间的指针。</p>
+<a id="more"></a>
+<p>腾达面试题目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int m(char * p)</span><br><span class="line">&#123; </span><br><span class="line">p=malloc(10); </span><br><span class="line">return 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">char *p; </span><br><span class="line">m(p); //传递的是p的地址的值</span><br><span class="line">strcpy(p,&quot;abc&quot;); </span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>腾达面试题目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int m(char * p)</span><br><span class="line">&#123; </span><br><span class="line">p=malloc(10); </span><br><span class="line">return 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() </span><br><span class="line">&#123; </span><br><span class="line">char *p; </span><br><span class="line">m(p); //传递的是p的地址的值</span><br><span class="line">strcpy(p,&quot;abc&quot;); </span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>分析：函数目的是将malloc返回的值传回主函数。<br>传参：指针p的地址<br>注意：不是指针指向的地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int m(char **p)</span><br><span class="line">&#123;</span><br><span class="line">	*p = (char *)malloc(10);</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char *p;</span><br><span class="line">	m(&amp;p);//传递p的地址 **p</span><br><span class="line">	strcpy(p,&quot;abc&quot;);</span><br><span class="line">	free(p);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
@@ -489,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -500,7 +502,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

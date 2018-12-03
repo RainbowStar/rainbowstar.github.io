@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="指针确定循环条件：inverte(int x,int n){    int p,temp,i,j,m=(n-1)/2;    i = x;//起始的元素    j = x + n -1;//最后的元素    p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。    for(;i&amp;lt;=p;i++,j–)    {        t">
+<meta name="description" content="指针确定循环条件：1234567891011121314inverte(int *x,int n)&amp;#123;	int *p,temp,*i,*j,m=(n-1)/2;	i = x;//起始的元素	j = x + n -1;//最后的元素	p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。	for(;i&amp;lt;=p;i++,j--)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指针的骚操作">
 <meta property="og:url" content="http://yoursite.com/2018/10/22/指针的骚操作/index.html">
 <meta property="og:site_name" content="难得入迷">
-<meta property="og:description" content="指针确定循环条件：inverte(int x,int n){    int p,temp,i,j,m=(n-1)/2;    i = x;//起始的元素    j = x + n -1;//最后的元素    p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。    for(;i&amp;lt;=p;i++,j–)    {        t">
+<meta property="og:description" content="指针确定循环条件：1234567891011121314inverte(int *x,int n)&amp;#123;	int *p,temp,*i,*j,m=(n-1)/2;	i = x;//起始的元素	j = x + n -1;//最后的元素	p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。	for(;i&amp;lt;=p;i++,j--)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-22T08:43:37.295Z">
+<meta property="og:updated_time" content="2018-12-03T09:00:33.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针的骚操作">
-<meta name="twitter:description" content="指针确定循环条件：inverte(int x,int n){    int p,temp,i,j,m=(n-1)/2;    i = x;//起始的元素    j = x + n -1;//最后的元素    p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。    for(;i&amp;lt;=p;i++,j–)    {        t">
+<meta name="twitter:description" content="指针确定循环条件：1234567891011121314inverte(int *x,int n)&amp;#123;	int *p,temp,*i,*j,m=(n-1)/2;	i = x;//起始的元素	j = x + n -1;//最后的元素	p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。	for(;i&amp;lt;=p;i++,j--)">
 
 
 
@@ -355,9 +355,7 @@
       
 
       
-        <p>指针确定循环条件：<br>inverte(int <em>x,int n)<br>{<br>    int </em>p,temp,<em>i,</em>j,m=(n-1)/2;<br>    i = x;//起始的元素<br>    j = x + n -1;//最后的元素<br>    p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。<br>    for(;i&lt;=p;i++,j–)<br>    {<br>        temp = <em>i;
-        </em>i = <em>j;
-        </em>j = temp;<br>    }<br>    return 0;<br>}</p>
+        <p>指针确定循环条件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">inverte(int *x,int n)</span><br><span class="line">&#123;</span><br><span class="line">	int *p,temp,*i,*j,m=(n-1)/2;</span><br><span class="line">	i = x;//起始的元素</span><br><span class="line">	j = x + n -1;//最后的元素</span><br><span class="line">	p = x + m;//循环终极点，很巧妙的一步，免去再定义一个用来循环的量。直接比较地址，地址也是一位一位移动的。</span><br><span class="line">	for(;i&lt;=p;i++,j--)</span><br><span class="line">	&#123;</span><br><span class="line">		temp = *i;</span><br><span class="line">		*i = *j;</span><br><span class="line">		*j = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -466,7 +464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -477,7 +475,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
