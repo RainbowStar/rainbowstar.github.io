@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux命令汇总 编写原则： 1.大纲分类 2.较为复杂的可以单独写一个文档，但是汇总中要能查到 3.不要写具体的软件，这是通用的命令，适合所有软件 4.列出一些需要注意的，不要冗余">
+<meta property="og:type" content="article">
+<meta property="og:title" content="难得入迷">
+<meta property="og:url" content="http://yoursite.com/2020/09/03/Linux命令汇总/index.html">
+<meta property="og:site_name" content="难得入迷">
+<meta property="og:description" content="Linux命令汇总 编写原则： 1.大纲分类 2.较为复杂的可以单独写一个文档，但是汇总中要能查到 3.不要写具体的软件，这是通用的命令，适合所有软件 4.列出一些需要注意的，不要冗余">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gitee.com/Rainbowstar_Ah/Picgo/raw/master/img/20200904002526.png">
+<meta property="og:updated_time" content="2020-09-23T11:58:08.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="难得入迷">
+<meta name="twitter:description" content="Linux命令汇总 编写原则： 1.大纲分类 2.较为复杂的可以单独写一个文档，但是汇总中要能查到 3.不要写具体的软件，这是通用的命令，适合所有软件 4.列出一些需要注意的，不要冗余">
+<meta name="twitter:image" content="https://gitee.com/Rainbowstar_Ah/Picgo/raw/master/img/20200904002526.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/03/Linux命令汇总/">
+
+
+
+
+
+  <title> | 难得入迷</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">难得入迷</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/03/Linux命令汇总/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Star">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/spike2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="难得入迷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T23:13:50+08:00">
+                2020-09-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-23T19:58:08+08:00">
+                2020-09-23
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux命令汇总"><a href="#Linux命令汇总" class="headerlink" title="Linux命令汇总"></a>Linux命令汇总</h1><blockquote>
+<p>编写原则：</p>
+<p>1.大纲分类</p>
+<p>2.较为复杂的可以单独写一个文档，但是汇总中要能查到</p>
+<p>3.不要写具体的软件，这是通用的命令，适合所有软件</p>
+<p>4.列出一些需要注意的，不要冗余</p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="文件类"><a href="#文件类" class="headerlink" title="文件类"></a>文件类</h2><h3 id="硬盘管理"><a href="#硬盘管理" class="headerlink" title="硬盘管理"></a>硬盘管理</h3><h4 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h4><ul>
+<li>samba</li>
+<li>nfs</li>
+<li>不同文件系统挂载fat、exfat、ntfs、ext4</li>
+</ul>
+<h4 id="查询容量与状态"><a href="#查询容量与状态" class="headerlink" title="查询容量与状态"></a>查询容量与状态</h4><ul>
+<li>显示磁盘分区上可以使用的磁盘空间：df</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-hl 查看挂载点,剩余空间，以KB、MB、GB的单位来显示</span><br></pre></td></tr></table></figure>
+<ul>
+<li>看硬盘及分区：fdisk -l //就是看有哪些硬盘，怎么分区的</li>
+<li>显示每个文件和目录的磁盘使用空间：du</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-h  以K  M  G为单位显示，提高可读性，查看某个目录的大小</span><br><span class="line">-sh 返回某个目录的大小，只有数值</span><br><span class="line">du -sm [文件夹] 返回该文件夹下文件总数</span><br></pre></td></tr></table></figure>
+<h4 id="fdisk格式化新硬盘"><a href="#fdisk格式化新硬盘" class="headerlink" title="fdisk格式化新硬盘"></a>fdisk格式化新硬盘</h4><p><a href="https://www.cnblogs.com/diantong/p/8820779.html" target="_blank" rel="noopener">参考-全命令</a></p>
+<ul>
+<li><p>查看：fdisk -l</p>
+</li>
+<li><p>开始：fdisk /dev/sdb </p>
+<ul>
+<li>n：新建<code>p是主分区</code>&amp;<code>e是扩展分区</code></li>
+<li>设置大小</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">分区号 (1-4，默认 1)：</span><br><span class="line">起始 扇区 (2048-20971519，默认为 2048)：</span><br><span class="line">将使用默认值 2048</span><br><span class="line">Last 扇区, +扇区 or +size&#123;K,M,G&#125; (2048-20971519，默认为 20971519)：+3G //要多少G就设多少</span><br><span class="line">分区 1 已设置为 Linux 类型，大小设为 3 GiB</span><br></pre></td></tr></table></figure>
+<ul>
+<li>w：写入，不执行的话修改不会保存</li>
+<li>p：打印分区表，后续可以删除</li>
+<li>d：删除，选择数字</li>
+</ul>
+</li>
+<li><p>格式化分区</p>
+<ul>
+<li>mkfs.ext4 /dev/sdxx //分区完成后，fdisk -l可以看到</li>
+</ul>
+</li>
+<li><p>开机自动挂载</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo  &quot;/dev/sdb1 /data2 xfs defaults 0 0&quot;  &gt;&gt;/etc/fstab</span><br></pre></td></tr></table></figure>
+<p>扩展 挂载IOS镜像等</p>
+<h3 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h3><ul>
+<li>最常用:ls</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Slh //h使文件易读 S安装从大到小排序</span><br><span class="line">可以查看文件夹和文件的权限、用户与群组</span><br></pre></td></tr></table></figure>
+<ul>
+<li>快速查看文件内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat -n filename显示小部分内容，-n带行号</span><br><span class="line">more filename百分比显示已看内容，回车或者空格向下看</span><br><span class="line">head -n num filename 查看从头开始的num行</span><br><span class="line">tail -n num filename 查看最后的num行</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看文本行数、字节、单词:wc //man一下</li>
+<li>查看文件不同</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">diff --brief diff_A.txt diff_B.txt  查看两个文件是否不同</span><br><span class="line">diff -c diff_A.txt diff_B.txt 查看不同的地方</span><br></pre></td></tr></table></figure>
+<h3 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h3><ul>
+<li>按照指定大小和个数的数据块复制和转化文件：dd</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if 输入</span><br><span class="line">of 输出</span><br><span class="line">bs 每个块大小</span><br><span class="line">count 复制块的个数</span><br><span class="line">dd if=/dev/zero of=560_file count=1 bs=560M #/dev/zero 可以无限输入数据,可以用来测试</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关键词查询：grep</li>
+<li>拆分大文件(一般是日志)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -b 20M logdata mydate</span><br></pre></td></tr></table></figure>
+<h3 id="设备查看"><a href="#设备查看" class="headerlink" title="设备查看"></a>设备查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ls /dev查看有那些设备接口</span><br><span class="line"></span><br><span class="line">/dev/hd[a-t]：IDE设备</span><br><span class="line">/dev/sd[a-z]：SCSI设备</span><br><span class="line">/dev/fd[0-7]：标准软驱</span><br><span class="line">/dev/md[0-31]：软raid设备</span><br><span class="line">/dev/loop[0-7]：本地回环设备</span><br><span class="line">/dev/ram[0-15]：内存</span><br><span class="line">/dev/null：无限数据接收设备,相当于黑洞</span><br><span class="line">/dev/zero：无限零资源</span><br><span class="line">/dev/tty[0-63]：虚拟终端</span><br><span class="line">/dev/ttyS[0-3]：串口</span><br><span class="line">/dev/lp[0-3]：并口</span><br><span class="line">/dev/console：控制台</span><br><span class="line">/dev/fb[0-31]：framebuffer</span><br><span class="line">/dev/cdrom =&gt; /dev/hdc</span><br><span class="line">/dev/modem =&gt; /dev/ttyS[0-9]</span><br><span class="line">/dev/pilot =&gt; /dev/ttyS[0-9]</span><br><span class="line">/dev/random：随机数设备</span><br><span class="line">/dev/urandom：随机数设备</span><br><span class="line"></span><br><span class="line">查看是否为SSD:cat /sys/block/sda/queue/rotational(命令中的sba是你的磁盘名称，可以通过df命令查看磁盘，然后修改成你要的。0(ssd),1(sata)）</span><br><span class="line"></span><br><span class="line">优盘没法卸载 sync fuser -km /media/usbdisk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看USB设备：lsusb</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">串口的话会显示芯片型号</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/Rainbowstar_Ah/Picgo/raw/master/img/20200904002526.png" alt=""></p>
+<h3 id="加密解密"><a href="#加密解密" class="headerlink" title="加密解密"></a>加密解密</h3><h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><ul>
+<li>tar</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">打包：tar -cz(j)vf 输出名称 输入名称</span><br><span class="line">解包：tar -xz(j)vf 压缩包名称 //-C  输出位置与名称</span><br></pre></td></tr></table></figure>
+<ul>
+<li>zip、rar</li>
+</ul>
+<h3 id="关键目录说明"><a href="#关键目录说明" class="headerlink" title="关键目录说明"></a>关键目录说明</h3><blockquote>
+<p>**为容易混淆的目录</p>
+</blockquote>
+<ul>
+<li>系统常见目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">目录	描述</span><br><span class="line">/	/ 也被称为“斜杠”或者根。</span><br><span class="line">**/bin	由系统、系统管理员以及用户共享的通用程序。</span><br><span class="line">/boot	Boot 文件, 启动加载器(grub), 内核, vmlinuz</span><br><span class="line">/dev	包含了对系统设备、带有特殊属性的文件的引用。</span><br><span class="line">/etc	重要的系统配置文件。</span><br><span class="line">/home	系统用户的主目录。</span><br><span class="line">/lib	库文件，包括系统和用户都需要的所有类型的程序的文件。</span><br><span class="line">/lost+found	文件操作失败会被保存在这里。</span><br><span class="line">/mnt	外部文件系统的标准挂载点。</span><br><span class="line">/media	外部文件系统（或者某些发行版）的挂载点。</span><br><span class="line">/net	整个远程文件系统的标准挂载点 —— nfs。</span><br><span class="line">**/opt	一般都是包含一些附加的或者第三方软件。</span><br><span class="line">/proc	一个包含了系统资源相关信息的虚拟文件系统。</span><br><span class="line">/root	root 用户的主目录。</span><br><span class="line">**/sbin	由系统和系统管理员来使用的程序。</span><br><span class="line">/tmp	供系统使用的临时空间，重启时会被清空。重启清空！重启清空！</span><br><span class="line">**/usr	供所有用户相关程序使用的程序、库、文档等等。</span><br><span class="line">**/var	存储所有由用户创建的可变文件和临时文件，比如日志文件、邮件队列、后台打印程序，Web服务器，数据库等等。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要知道的目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/etc/passwd	包含了本地 Linux 的用户。</span><br><span class="line">/etc/shadow	包含了哈希过的本地账户密码。</span><br><span class="line">/etc/group	包含了本地账户分组。</span><br><span class="line">/etc/init.d/	包含了服务网初始化脚本 – 具体都安装了些啥应该值得一瞧。</span><br><span class="line">/etc/hostname	系统的 hostname。</span><br><span class="line">/etc/network/interfaces	网络接口。</span><br><span class="line">/etc/resolv.conf	系统的 DNS 服务。</span><br><span class="line">/etc/profile	系统的环境变量。</span><br><span class="line">~/.ssh/	SSH 密钥。</span><br><span class="line">~/.bash_history	用户的 bash 历史日志。</span><br><span class="line">/var/log/	Linux 系统的日志文件一般就被存放在这里。</span><br><span class="line">/var/adm/	UNIX 系统的日志文件一般就被存在在这里。</span><br><span class="line">/var/log/apache2/access.log/var/log/httpd/access.log	Apache 访问日志文件通常的存在路径。</span><br><span class="line">/etc/fstab	挂载的文件系统。</span><br></pre></td></tr></table></figure>
+<h2 id="网络类"><a href="#网络类" class="headerlink" title="网络类"></a>网络类</h2><h3 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h3><h3 id="网络状态"><a href="#网络状态" class="headerlink" title="网络状态"></a>网络状态</h3><h2 id="系统类"><a href="#系统类" class="headerlink" title="系统类"></a>系统类</h2><h3 id="系统环境变量和用户环境变量"><a href="#系统环境变量和用户环境变量" class="headerlink" title="系统环境变量和用户环境变量"></a>系统环境变量和用户环境变量</h3><p><a href="/etc/environment/etc/environment/etc/environment">环境变量参考</a></p>
+<ul>
+<li><p>显示环境变量</p>
+<ul>
+<li><code>export</code>命令显示当前系统定义的所有环境变量</li>
+<li><code>echo $PATH</code>命令输出当前的<code>PATH</code>环境变量的值</li>
+</ul>
+</li>
+<li><p>系统级别环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile(部分系统为：/etc/bash_profile）</span><br><span class="line">/etc/bashrc</span><br><span class="line">/etc/environment</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户级别环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/.bashrc</span><br><span class="line">~/.profile（部分系统为：~/.bash_profile）</span><br><span class="line">~/.profile文件中加载了~/.bashrc文件。</span><br></pre></td></tr></table></figure>
+<p><code>/.profile</code>文件<strong>只在用户登录的时候读取一次</strong>，而<code>/.bashrc</code>会在每次运行<code>Shell</code>脚本的时候读取一次。</p>
+</li>
+<li><p>系统与用户环境加载实质</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/environment -&gt; /etc/profile -&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生效配置</li>
+</ul>
+<ol>
+<li>使用source修改的相应文件即可</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：source /etc/profile</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改方法就是把以下的语句放入相应的文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/uusama/mysql/bin:$PATH</span><br><span class="line"># 或者把PATH放在前面</span><br><span class="line">export PATH=$PATH:/home/uusama/mysql/bin</span><br><span class="line">$PATH的意思就是引用PATH PATH=PATH+</span><br></pre></td></tr></table></figure>
+<p>注意：在shell执行export导入路径，是临时的必须添加到环境文件中</p>
+<h3 id="系统信息获取"><a href="#系统信息获取" class="headerlink" title="系统信息获取"></a>系统信息获取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、uname －a  </span><br><span class="line">Linux查看版本当前操作系统内核信息  </span><br><span class="line"></span><br><span class="line">2、cat /proc/version</span><br><span class="line">Linux查看当前操作系统版本信息      </span><br><span class="line"></span><br><span class="line">3、 cat /etc/issue  或cat /etc/redhat-release</span><br><span class="line">Linux查看版本当前操作系统发行版信息</span><br></pre></td></tr></table></figure>
+<h3 id="系统状态查询-包括软件状态"><a href="#系统状态查询-包括软件状态" class="headerlink" title="系统状态查询(包括软件状态)"></a>系统状态查询(包括软件状态)</h3><h3 id="系统控制"><a href="#系统控制" class="headerlink" title="系统控制"></a>系统控制</h3><ul>
+<li>history</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.列出所有使用过的命令</span><br><span class="line">2.!NumCom 惊叹号+命令数可以使得那条命令再次出现（可以删减编辑）\</span><br><span class="line">3.history -c 清除历史记录</span><br></pre></td></tr></table></figure>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><h2 id="权限类"><a href="#权限类" class="headerlink" title="权限类"></a>权限类</h2><h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h3><h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><h3 id="特殊权限"><a href="#特殊权限" class="headerlink" title="特殊权限"></a>特殊权限</h3><ul>
+<li>当前仅在samba中使用了SBIT位，多个用户在同一个目录下都能写文件和删除文件，操作自己的文件，不能操作其他人的文件，只有root和该目录的所有者才能操作目录下的文件。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod o+t test //其子目录会继承</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/03/Openwrt常用环境配置/" rel="next" title="Openwrt系统配置与测试环境搭建">
+                <i class="fa fa-chevron-left"></i> Openwrt系统配置与测试环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/09/80211学习/" rel="prev" title="80211帧学习">
+                80211帧学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/spike2.png" alt="Star">
+            
+              <p class="site-author-name" itemprop="name">Star</p>
+              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RainbowStar" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux命令汇总"><span class="nav-number">1.</span> <span class="nav-text">Linux命令汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件类"><span class="nav-number">1.1.</span> <span class="nav-text">文件类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#硬盘管理"><span class="nav-number">1.1.1.</span> <span class="nav-text">硬盘管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询容量与状态"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">查询容量与状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fdisk格式化新硬盘"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">fdisk格式化新硬盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件查看"><span class="nav-number">1.1.2.</span> <span class="nav-text">文件查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理"><span class="nav-number">1.1.3.</span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备查看"><span class="nav-number">1.1.4.</span> <span class="nav-text">设备查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密解密"><span class="nav-number">1.1.5.</span> <span class="nav-text">加密解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压缩"><span class="nav-number">1.1.6.</span> <span class="nav-text">解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键目录说明"><span class="nav-number">1.1.7.</span> <span class="nav-text">关键目录说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络类"><span class="nav-number">1.2.</span> <span class="nav-text">网络类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络传输"><span class="nav-number">1.2.1.</span> <span class="nav-text">网络传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络状态"><span class="nav-number">1.2.2.</span> <span class="nav-text">网络状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统类"><span class="nav-number">1.3.</span> <span class="nav-text">系统类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统环境变量和用户环境变量"><span class="nav-number">1.3.1.</span> <span class="nav-text">系统环境变量和用户环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统信息获取"><span class="nav-number">1.3.2.</span> <span class="nav-text">系统信息获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统状态查询-包括软件状态"><span class="nav-number">1.3.3.</span> <span class="nav-text">系统状态查询(包括软件状态)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统控制"><span class="nav-number">1.3.4.</span> <span class="nav-text">系统控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件安装"><span class="nav-number">1.3.5.</span> <span class="nav-text">软件安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限类"><span class="nav-number">1.4.</span> <span class="nav-text">权限类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户和群组"><span class="nav-number">1.4.1.</span> <span class="nav-text">用户和群组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">1.4.2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊权限"><span class="nav-number">1.4.3.</span> <span class="nav-text">特殊权限</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Star</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
